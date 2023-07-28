@@ -18,10 +18,10 @@
         <b class="arrow"></b>
       </li>
 
-      <li class="{{ $menu === 'barang' ? 'active open' : '' }} hover">
-        <a href="{{ route('barang.index') }}">
+      <li class="{{ $menu === 'produk' ? 'active open' : '' }} hover">
+        <a href="#">
           <i class="menu-icon fa fa-tags"></i>
-          <span class="menu-text"> Barang </span>
+          <span class="menu-text"> Monitor Produk </span>
         </a>
 
         <b class="arrow"></b>
