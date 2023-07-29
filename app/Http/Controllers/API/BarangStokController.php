@@ -34,8 +34,8 @@ class BarangStokController extends Controller
         foreach ($data as $item) {
           $namaBarangArray[] = [
             'nama' => $item->barang->nama,
-            'stok_masuk' => $item->stok_masuk,
-            'stok_keluar' => $item->stok_keluar,
+            'stok_masuk' => intval($item->stok_masuk),
+            'stok_keluar' => intval($item->stok_keluar),
             'bulan_stok' => $item->bulan_stok,
             'tahun_stok' => $item->tahun_stok,
             'created_at' => $item->barang->created_at,

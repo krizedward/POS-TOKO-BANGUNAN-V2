@@ -10,7 +10,7 @@
   <!-- page-header -->
   <div class="page-header">
     <h1>
-      Barang
+      Barang Stok
       <small data-step="1" 
         data-intro="Langkah 1: Halaman index form Produk Barang">
         <i class="ace-icon fa fa-angle-double-right"></i>
@@ -42,7 +42,7 @@
 
   <div class="space"></div>
 
-	@include('layouts.table.index_barang')
+	@include('layouts.table.index_barang_stok')
   
   <div class="center">
     <br />

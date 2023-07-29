@@ -20,7 +20,8 @@ class BarangController extends Controller
         try {
 
             $menu = 'barang';
-            $data = Barang::paginate(10);
+            // $data = Barang::paginate(10);
+            $data = Barang::all();
 
             // return dd($data);
             return view('production.barang.index', 

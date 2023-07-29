@@ -21,9 +21,15 @@ class BarangStokController extends Controller
     public function index(): View 
     {
       try {
-        
+
+        $menu = 'barang';
         $data = BarangStok::all();
-        return dd($data);
+        // return dd($data);
+        return view('production.barang_stok.index', 
+        compact(
+          'menu',
+          'data',
+        ));
 
       } catch (\Exception $e) {
         

@@ -19,12 +19,53 @@
       </li>
 
       <li class="{{ $menu === 'barang' ? 'active open' : '' }} hover">
-        <a href="{{ route('barang.index') }}">
+        <a href="#" class="dropdown-toggle">
           <i class="menu-icon fa fa-tags"></i>
           <span class="menu-text"> Barang </span>
+
+          <b class="arrow fa fa-angle-down"></b>
         </a>
 
         <b class="arrow"></b>
+
+        <ul class="submenu">
+          <li class="hover">
+            <a href="{{ route('barang.index') }}">
+              <i class="menu-icon fa fa-caret-right"></i>
+              Master Barang
+            </a>
+
+            <b class="arrow"></b>
+          </li>
+
+          <li class="hover">
+            <a href="{{ route('barang-stok.index') }}">
+              <i class="menu-icon fa fa-caret-right"></i>
+              Stok Barang
+            </a>
+
+            <b class="arrow"></b>
+          </li>
+
+          <li class="hover">
+            <a href="#">
+              <i class="menu-icon fa fa-caret-right"></i>
+              Riwayat Masuk
+            </a>
+
+            <b class="arrow"></b>
+          </li>
+
+          <li class="hover">
+            <a href="#">
+              <i class="menu-icon fa fa-caret-right"></i>
+              Riwayat Keluar
+            </a>
+
+            <b class="arrow"></b>
+          </li>
+
+        </ul>
       </li>
 
       <li class="{{ $menu === 'kategori-produk' ? 'active open' : '' }} hover">
