@@ -60,6 +60,57 @@
       <ul class="submenu">
 
         <li class="hover">
+          <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-caret-right"></i>
+
+            Stok
+            <b class="arrow fa fa-angle-down"></b>
+          </a>
+
+          <b class="arrow"></b>
+
+          <ul class="submenu">
+            <li class="hover">
+              <a href="#">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Masuk
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="#">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Keluar
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="#">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Gudang
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="#">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Toko
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+          </ul>
+        </li>
+        <!-- tree menu -->
+
+        <li class="hover">
           <a href="{{ route('barang.index') }}">
             <i class="menu-icon fa fa-caret-right"></i>
             Barang
@@ -135,6 +186,73 @@
           </a>
 
           <b class="arrow"></b>
+        </li>
+
+        <li class="active open hover">
+          <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-caret-right"></i>
+
+            Layouts
+            <b class="arrow fa fa-angle-down"></b>
+          </a>
+
+          <b class="arrow"></b>
+
+          <ul class="submenu">
+            <li class="active hover">
+              <a href="top-menu.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Top Menu
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="two-menu-1.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Two Menus 1
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="two-menu-2.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Two Menus 2
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="mobile-menu-1.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Default Mobile Menu
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="mobile-menu-2.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Mobile Menu 2
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="mobile-menu-3.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Mobile Menu 3
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+          </ul>
         </li>
 
         <li class="hover">

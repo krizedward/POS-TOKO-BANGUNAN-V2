@@ -10,6 +10,8 @@ class LogBarangMasukController extends Controller
 {
     //
     public function index () {
+        $startDate = date('Y-m-d', mktime(0,0,0, date('m'), 1, date('Y')));
+        $endDate = date('Y-m-d');
         $data = LogBarangMasuk::all();
         $menu = 'log-barang-masuk';
 
@@ -18,6 +20,8 @@ class LogBarangMasukController extends Controller
         compact(
             'menu',
             'data',
+            'startDate', 
+            'endDate',
         ));
     }
 }
