@@ -20,13 +20,13 @@ class KategoriBarang extends Model
     protected $table = 'kategori_barang';
 
     protected $fillable = [
-        'kategori_umum_id',
+      'kategori_umum_id',
 	    'nama',
 		'slug',
     ];
 
     public function umum()
     {
-      return $this->belongsTo('App\Models\KategoriUmumProduk', 'kategori_umum_id');
+      return $this->belongsTo('App\Models\KategoriBarangUmum', 'kategori_umum_id');
     }
 }

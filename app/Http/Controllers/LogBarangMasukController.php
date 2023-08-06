@@ -11,7 +11,13 @@ class LogBarangMasukController extends Controller
     //
     public function index () {
         $data = LogBarangMasuk::all();
-      
-        return dd($data); 
-    } 
+        $menu = 'log-barang-masuk';
+
+        // return dd($data);
+        return view('production.log_barang_masuk.index',
+        compact(
+            'menu',
+            'data',
+        ));
+    }
 }
