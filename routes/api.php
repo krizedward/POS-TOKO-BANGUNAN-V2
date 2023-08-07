@@ -15,6 +15,8 @@ use App\Http\Controllers\API\LogBarangKeluarController;
 use App\Http\Controllers\API\BarangTotalStokController;
 use App\Http\Controllers\API\OrderBarangController;
 use App\Http\Controllers\API\TemporderBarangController;
+use App\Http\Controllers\API\KategoriBarangController;
+use App\Http\Controllers\API\KategoriBarangUmumController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,6 +31,11 @@ use App\Http\Controllers\API\TemporderBarangController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+// kategori barang umum
+Route::get('/kategori-barang-umum', [KategoriBarangUmumController::class, 'index']);
+// kategori barang
+Route::get('/kategori-barang', [KategoriBarangController::class, 'index']);
+Route::post('/kategori-barang', [KategoriBarangController::class, 'store']);
 // temporder barang
 Route::get('/temporder-barang', [TemporderBarangController::class, 'index']);
 // order barang

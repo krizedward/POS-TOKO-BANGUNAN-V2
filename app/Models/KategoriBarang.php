@@ -29,4 +29,9 @@ class KategoriBarang extends Model
     {
       return $this->belongsTo('App\Models\KategoriBarangUmum', 'kategori_umum_id');
     }
+
+    public function income($date)
+    {
+        return $this->where('created_at', 'LIKE', "$date%")->sum('total'); 
+    }
 }
