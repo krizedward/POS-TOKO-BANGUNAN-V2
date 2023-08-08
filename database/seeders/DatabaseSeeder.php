@@ -24,11 +24,11 @@ class DatabaseSeeder extends Seeder
             // KategoriProdukTableSeeder::class,
             
             KategoriBarangUmumTableSeeder::class,
-            KategoriBarangTableSeeder::class,
-            BarangSatuanTableSeeder::class,
-            BarangTableSeeder::class,
-            OrderBarangTableSeeder::class,
-            TemporderBarangTableSeeder::class,
+            // KategoriBarangTableSeeder::class,
+            // BarangSatuanTableSeeder::class,
+            // BarangTableSeeder::class,
+            // OrderBarangTableSeeder::class,
+            // TemporderBarangTableSeeder::class,
             
             // BarangUkuranTableSeeder::class,
             // BarangMasterTableSeeder::class,

@@ -10,11 +10,11 @@
   <!-- page-header -->
   <div class="page-header">
     <h1>
-      Barang
+      Master Kategori Barang
       <small data-step="1" data-intro="Menampilkan tabel kategori">
         <i class="ace-icon fa fa-angle-double-right"></i>
         <!-- top menu &amp; navigation -->
-        create page
+        edit page
       </small>
     </h1>
   </div><!-- /.page-header -->
@@ -35,7 +35,7 @@
 			</div>
 			@endif
 			<!-- form -->
-			@include('layouts.form.create_produk')
+			@include('layouts.form.edit_master_kategori_barang')
 			<!-- PAGE CONTENT ENDS -->
 		</div><!-- /.col -->
 	</div>

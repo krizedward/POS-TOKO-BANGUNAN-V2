@@ -22,7 +22,7 @@ class KategoriBarangUmumController extends Controller
             $menu = 'kategori-barang';
             $data = KategoriBarangUmum::all();
             // $data = Barang::paginate(10);
-            return dd($data);
+            // return dd($data);
             return view('production.kategori_barang_umum.index', 
             compact(
               'menu',

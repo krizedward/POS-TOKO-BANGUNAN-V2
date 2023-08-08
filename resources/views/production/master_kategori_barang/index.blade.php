@@ -10,7 +10,7 @@
 <!-- page-header -->
 <div class="page-header">
   <h1>
-    Kategori Barang
+    Master Kategori Barang
     <small data-step="1" data-intro="Langkah 1: Halaman index form Produk Barang">
       <i class="ace-icon fa fa-angle-double-right"></i>
       <!-- top menu &amp; navigation -->
@@ -23,49 +23,15 @@
 @section('main')
 <div class="row">
   <div class="col-xs-12">
-    <!-- <a href="#" class="btn btn-app btn-light btn-sm">
-        <i class="ace-icon fa fa-print bigger-200"></i>
-        Print
-      </a> -->
+    <a href="{{ route('master-kategori-barang.create') }}" class="btn btn-app btn-info btn-sm">
+      <i class="ace-icon fa fa-book bigger-200"></i>
+      Tambah
+    </a>
   </div>
-
-  
-  <div class="col-sm-12">
-    <div class="widget-box">
-
-      <div class="widget-header widget-header-flat widget-header-small">
-        <h5 class="widget-title">Tabel Barang Masuk</h5>
-      </div>
-
-      <div class="widget-body">
-        <div class="widget-main">
-          <table class="table  table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nama</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($data as $d)
-                <tr>
-                  <td>{{ $d->id }}</td>
-                  <td>{{ $d->nama }}</td>
-                  <td>Pendding</td>
-                </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div><!-- /.widget-main -->
-      </div><!-- /.widget-body -->
-
-    </div><!-- /.widget-box -->
-  </div><!-- /.col -->
-
 </div>
-
 <div class="space"></div>
+
+@include('layouts.table.index_master_kategori_barang')
 
 <div class="center">
   <br />

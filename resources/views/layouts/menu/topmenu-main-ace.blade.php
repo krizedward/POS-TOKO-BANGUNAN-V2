@@ -39,18 +39,17 @@
     <li class="{{ $menu === 'dashboard' ? 'active open' : '' }} hover">
       <a href="{{ route('dashboard') }}">
         <i class="menu-icon fa fa-tachometer"></i>
-        <span class="menu-text"> Dashboard </span>
+        <span class="menu-text"> Dashboard</span>
       </a>
 
       <b class="arrow"></b>
     </li>
 
-    <li class="{{ $menu === 'barang' ? 'active open' : '' }} hover">
+    <!-- master -->
+    <li class="hover">
       <a href="#" class="dropdown-toggle">
-        <i class="menu-icon fa fa-desktop"></i>
-        <span class="menu-text">
-          Barang
-        </span>
+        <i class="menu-icon fa fa-list-alt"></i>
+        <span class="menu-text"> Master</span>
 
         <b class="arrow fa fa-angle-down"></b>
       </a>
@@ -58,60 +57,26 @@
       <b class="arrow"></b>
 
       <ul class="submenu">
-
         <li class="hover">
-          <a href="#" class="dropdown-toggle">
+          <a href="{{ route('master-kategori-barang.index') }}">
             <i class="menu-icon fa fa-caret-right"></i>
-
-            Stok
-            <b class="arrow fa fa-angle-down"></b>
+            Kategori
           </a>
 
           <b class="arrow"></b>
-
-          <ul class="submenu">
-            <li class="hover">
-              <a href="#">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Masuk
-              </a>
-
-              <b class="arrow"></b>
-            </li>
-
-            <li class="hover">
-              <a href="#">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Keluar
-              </a>
-
-              <b class="arrow"></b>
-            </li>
-
-            <li class="hover">
-              <a href="#">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Gudang
-              </a>
-
-              <b class="arrow"></b>
-            </li>
-
-            <li class="hover">
-              <a href="#">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Toko
-              </a>
-
-              <b class="arrow"></b>
-            </li>
-
-          </ul>
         </li>
-        <!-- tree menu -->
 
         <li class="hover">
-          <a href="{{ route('barang.index') }}">
+          <a href="#">
+            <i class="menu-icon fa fa-caret-right"></i>
+            Satuan
+          </a>
+
+          <b class="arrow"></b>
+        </li>
+
+        <li class="hover">
+          <a href="#">
             <i class="menu-icon fa fa-caret-right"></i>
             Barang
           </a>
@@ -120,55 +85,94 @@
         </li>
 
         <li class="hover">
-          <a href="{{ route('barang-stok.index') }}">
+          <a href="#">
             <i class="menu-icon fa fa-caret-right"></i>
-            Stok Barang
+            Gudang
           </a>
 
           <b class="arrow"></b>
         </li>
 
         <li class="hover">
-          <a href="{{ route('log-barang-masuk.index') }}">
+          <a href="#">
             <i class="menu-icon fa fa-caret-right"></i>
-            Riwayat Masuk
+            Customer
           </a>
 
           <b class="arrow"></b>
         </li>
 
         <li class="hover">
-          <a href="{{ route('log-barang-keluar.index') }}">
+          <a href="#">
             <i class="menu-icon fa fa-caret-right"></i>
-            Riwayat Keluar
+            Supplier
           </a>
 
           <b class="arrow"></b>
         </li>
 
         <li class="hover">
-          <a href="{{ route('kategori-barang-umum.index') }}">
+          <a href="#">
             <i class="menu-icon fa fa-caret-right"></i>
-            Kategori Barang Umum
+            Sales
           </a>
 
           <b class="arrow"></b>
         </li>
-
-        <li class="hover">
-          <a href="{{ route('kategori-barang.index') }}">
-            <i class="menu-icon fa fa-caret-right"></i>
-            Kategori Barang
-          </a>
-
-          <b class="arrow"></b>
-        </li>
-
       </ul>
-
     </li>
 
+    <!-- transaksi -->
     <li class="hover">
+      <a href="#" class="dropdown-toggle">
+        <i class="menu-icon fa fa-money"></i>
+        <span class="menu-text"> Transaksi </span>
+
+        <b class="arrow fa fa-angle-down"></b>
+      </a>
+
+      <b class="arrow"></b>
+
+      <ul class="submenu">
+        <li class="hover">
+          <a href="#">
+            <i class="menu-icon fa fa-caret-right"></i>
+            Pembelian
+          </a>
+
+          <b class="arrow"></b>
+        </li>
+
+        <li class="hover">
+          <a href="#">
+            <i class="menu-icon fa fa-caret-right"></i>
+            Penjualan
+          </a>
+
+          <b class="arrow"></b>
+        </li>
+
+        <li class="hover">
+          <a href="#">
+            <i class="menu-icon fa fa-caret-right"></i>
+            Pembayaran
+          </a>
+
+          <b class="arrow"></b>
+        </li>
+
+        <li class="hover">
+          <a href="#">
+            <i class="menu-icon fa fa-caret-right"></i>
+            Hutang & Piutang
+          </a>
+
+          <b class="arrow"></b>
+        </li>
+      </ul>
+    </li>
+
+    <!-- <li class="hover">
       <a href="#" class="dropdown-toggle">
         <i class="menu-icon fa fa-list"></i>
         <span class="menu-text"> Tables </span>
@@ -322,16 +326,8 @@
           <b class="arrow"></b>
         </li>
       </ul>
-    </li>
-
-    <li class="hover">
-      <a href="widgets.html">
-        <i class="menu-icon fa fa-list-alt"></i>
-        <span class="menu-text"> Widgets </span>
-      </a>
-
-      <b class="arrow"></b>
-    </li>
+    </li> -->
+    
     <!-- 
         <li class="hover">
           <a href="calendar.html">
@@ -349,7 +345,7 @@
           <b class="arrow"></b>
         </li> -->
 
-    <li class="hover">
+    <!-- <li class="hover">
       <a href="gallery.html">
         <i class="menu-icon fa fa-picture-o"></i>
         <span class="menu-text"> Gallery </span>
@@ -504,6 +500,6 @@
           <b class="arrow"></b>
         </li>
       </ul>
-    </li>
+    </li> -->
   </ul><!-- /.nav-list -->
 </div>
