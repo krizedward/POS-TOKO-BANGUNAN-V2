@@ -1,1 +1,0 @@
-<h1>create barang stok</h1>
