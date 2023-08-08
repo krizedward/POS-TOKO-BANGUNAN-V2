@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('kategori_umum_id')->nullable();
             $table->string('nama')->nullable();
             $table->string('slug')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
             $table->foreign('kategori_umum_id')

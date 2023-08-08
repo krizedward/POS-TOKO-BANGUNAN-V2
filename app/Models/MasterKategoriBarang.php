@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class MasterKategoriBarang extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     /**
      * Next Step.
@@ -18,6 +20,7 @@ class MasterKategoriBarang extends Model
     
     protected $primaryKey = 'id';
     protected $table = 'master_kategori_barang';
+    protected $dates = ['deleted_at'];
      
     protected $fillable = [
         'kategori_umum_id',

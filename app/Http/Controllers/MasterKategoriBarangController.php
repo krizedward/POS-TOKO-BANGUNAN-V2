@@ -17,7 +17,8 @@ use Illuminate\View\View;
 class MasterKategoriBarangController extends Controller
 {
     //
-    public function index () {
+    public function index(): View 
+    {
         
         try {
 
@@ -39,7 +40,7 @@ class MasterKategoriBarangController extends Controller
         
     }
 
-    public function create () 
+    public function create(): View
     {
         try {
             $menu = 'kategori-barang';
@@ -77,9 +78,9 @@ class MasterKategoriBarangController extends Controller
         
     }
 
-    // public function show () {
-    //     return 'show';
-    // }
+    public function show () {
+        return 'detail';
+    }
 
     public function edit($id): View 
     {
@@ -135,4 +136,51 @@ class MasterKategoriBarangController extends Controller
 
     	} 
     }
+
+    public function sampah()
+    {
+        // mengampil data guru yang sudah dihapus
+        $menu = 'kategori-barang';
+        $data = MasterKategoriBarang::onlyTrashed()->get();
+        // return view('guru_trash', ['guru' => $guru]);
+        return view('production.master_kategori_barang.trash', 
+        compact(
+          'menu',
+          'data',
+        ));
+        return 'sampah';
+    }
+
+    public function hapus_permanen_semua()
+    {
+    	// hapus permanen semua data guru yang sudah dihapus
+    	$data = MasterKategoriBarang::onlyTrashed();
+    	$data->forceDelete();
+        
+        Alert::success('Success', 'Telah Berhasil Menghapus Data Master Kategori Barang.');
+    	return Redirect::route('master-kategori-barang.index');
+    }
+
+    // hapus permanen
+    public function hapus_permanen($id)
+    {
+    	// hapus permanen data guru
+    	$data = MasterKategoriBarang::onlyTrashed()->where('id',$id);
+    	$data->forceDelete();
+ 
+    	Alert::success('Success', 'Telah Berhasil Menghapus Data Master Kategori Barang.');
+
+    	return Redirect::route('master-kategori-barang.index');
+    }
+
+    public function kembalikan_semua()
+    {
+    		
+    	$guru = MasterKategoriBarang::onlyTrashed();
+    	$guru->restore();
+ 
+    	Alert::success('Success', 'Telah Berhasil Menghapus Data Master Kategori Barang.');
+    	return Redirect::route('master-kategori-barang.index');
+    }
+
 }

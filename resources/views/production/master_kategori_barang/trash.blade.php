@@ -14,7 +14,7 @@
     <small data-step="1" data-intro="Langkah 1: Halaman index form Produk Barang">
       <i class="ace-icon fa fa-angle-double-right"></i>
       <!-- top menu &amp; navigation -->
-      index page
+      trash page
     </small>
   </h1>
 </div><!-- /.page-header -->
@@ -27,6 +27,7 @@
       <i class="ace-icon fa fa-table bigger-200"></i>
       Tabel
     </a>
+
     <a href="{{ route('master-kategori-barang.create') }}" class="btn btn-app btn-info btn-sm">
       <i class="ace-icon fa fa-book bigger-200"></i>
       Tambah
@@ -40,7 +41,7 @@
 </div>
 <div class="space"></div>
 
-@include('layouts.table.index_master_kategori_barang')
+@include('layouts.table.trash_master_kategori_barang')
 
 <div class="center">
   <br />
