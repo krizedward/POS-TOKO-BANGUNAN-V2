@@ -67,7 +67,7 @@
         </li>
 
         <li class="hover">
-          <a href="#">
+          <a href="{{ route('master-satuan-barang.index') }}">
             <i class="menu-icon fa fa-caret-right"></i>
             Satuan
           </a>

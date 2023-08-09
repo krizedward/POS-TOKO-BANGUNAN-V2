@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasterKategoriBarangController;
+use App\Http\Controllers\MasterSatuanBarangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +16,18 @@ use App\Http\Controllers\MasterKategoriBarangController;
 */
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+// master satuan barang
+Route::get('/master-satuan-barang', [MasterSatuanBarangController::class, 'index'])->name('master-satuan-barang.index');
+Route::get('/master-satuan-barang/create', [MasterSatuanBarangController::class, 'create'])->name('master-satuan-barang.create');
+Route::post('/master-satuan-barang/create', [MasterSatuanBarangController::class, 'store'])->name('master-satuan-barang.store');
+Route::get('/master-satuan-barang/{master_satuan_barang}', [MasterSatuanBarangController::class, 'show'])->name('master-satuan-barang.show');
+Route::get('/master-satuan-barang/{master_satuan_barang}/edit', [MasterSatuanBarangController::class, 'edit'])->name('master-satuan-barang.edit');
+Route::put('/master-satuan-barang/{master_satuan_barang}', [MasterSatuanBarangController::class, 'update'])->name('master-satuan-barang.update');
+Route::delete('/master-satuan-barang/{master_satuan_barang}', [MasterSatuanBarangController::class, 'destroy'])->name('master-satuan-barang.destroy');
+// softdelete
+Route::get('/master-satuan-barang/sampah/hapus', [MasterSatuanBarangController::class, 'trash'])->name('master-satuan-barang.trash');
+Route::delete('/master-satuan-barang/{master_satuan_barang}/hapus', [MasterSatuanBarangController::class, 'delete'])->name('master-satuan-barang.delete');
+Route::get('/master-satuan-barang/{master_satuan_barang}/kembalikan', [MasterSatuanBarangController::class, 'restore'])->name('master-satuan-barang.restore');
 // master kategori barang
 Route::get('/master-kategori-barang', [MasterKategoriBarangController::class, 'index'])->name('master-kategori-barang.index');
 Route::get('/master-kategori-barang/create', [MasterKategoriBarangController::class, 'create'])->name('master-kategori-barang.create');
@@ -31,3 +44,7 @@ Route::get('/master-kategori-barang/{master_kategori_barang}/kembalikan', [Maste
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
