@@ -1,5 +1,5 @@
 <div class="form-horizontal">
-  <form id="form1" action="{{ route('master-kategori-barang.store') }}" method="post" enctype="multipart/form-data">
+  <form id="form1" action="{{ route('master-barang.store') }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('POST')
 
@@ -11,25 +11,50 @@
 		</div>
 	  </div> -->
 
-    <!-- Nama -->
+    <!-- Nama Barang -->
     <div class="form-group">
       <label class="col-sm-3 control-label no-padding-right" for="form-field-1">
         Nama
       </label>
       <div class="col-sm-9">
-        <input type="text" name="nama" id="form-field-1" placeholder="Nama Kategori.." class="col-xs-10 col-sm-5" />
+        <input type="text" name="nama" id="form-field-1" placeholder="Nama Barang.." class="col-xs-10 col-sm-5" />
       </div>
     </div>
 
-    <!-- Kategori -->
+    <!-- keterangan Barang -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">
+        Keterangan
+      </label>
+      <div class="col-sm-9">
+        <input type="text" name="keterangan" id="form-field-1" placeholder="Opsional tidak harus diisi inputan.." class="col-xs-10 col-sm-5" />
+      </div>
+    </div>
+
+    <!-- Kategori Barang -->
     <div class="form-group">
       <label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">
-        Jenis
+        Kategori
       </label>
       <div class="col-sm-9">
         <select name="kategori_id" class="col-xs-10 col-sm-5" id="form-field-select-1">
           <option value="">Pilih Kategori</option>
-          @foreach ($KategoriUmumProduk as $data)
+          @foreach ($MasterKategoriBarang as $data)
+          <option value="{{ $data->id }}">{{ $data->nama }}</option>
+          @endforeach
+        </select>
+      </div>
+    </div>
+
+    <!-- Kategori Barang -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">
+        Satuan
+      </label>
+      <div class="col-sm-9">
+        <select name="satuan_id" class="col-xs-10 col-sm-5" id="form-field-select-1">
+          <option value="">Pilih Satuan</option>
+          @foreach ($MasterSatuanBarang as $data)
           <option value="{{ $data->id }}">{{ $data->nama }}</option>
           @endforeach
         </select>
@@ -40,7 +65,7 @@
 
   <div class="clearfix form-actions">
     <div class="col-md-offset-3 col-md-9">
-      <a href="{{ route('master-kategori-barang.index') }}" class="btn btn-warning" type="reset">
+      <a href="{{ route('master-barang.index') }}" class="btn btn-warning" type="reset">
         <i class="ace-icon fa fa-arrow-left  bigger-110"></i>
         Kembali
       </a>

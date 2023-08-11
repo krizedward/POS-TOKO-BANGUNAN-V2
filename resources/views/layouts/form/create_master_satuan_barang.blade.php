@@ -27,7 +27,7 @@
         Keterangan
       </label>
       <div class="col-sm-9">
-        <input type="text" name="keterangan" id="form-field-1" placeholder="Ketarangan Satuan Baru.." class="col-xs-10 col-sm-5" />
+        <input type="text" name="keterangan" id="form-field-1" placeholder="Opsional tidak harus diisi inputan.." class="col-xs-10 col-sm-5" />
       </div>
     </div>
     
@@ -42,7 +42,7 @@
       &nbsp; &nbsp; &nbsp;
       <button class="btn btn-info" type="submit" id="submitButton">
         <i class="ace-icon fa fa-check bigger-110"></i>
-        Submit
+        Simpan
       </button>
       &nbsp; &nbsp; &nbsp;
       <!-- <button class="btn" type="reset">

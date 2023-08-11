@@ -4,7 +4,7 @@
     <div class="widget-box">
 
       <div class="widget-header widget-header-flat widget-header-small">
-        <h5 class="widget-title">Tabel Master Satuan</h5>
+        <h5 class="widget-title">Tabel Master</h5>
       </div>
 
       <div class="widget-body">
@@ -12,18 +12,35 @@
           <table class="table  table-bordered table-hover">
             <thead>
               <tr>
-                <th>#</th>
-                <th>Nama</th>
-                <th>Keterangan</th>
-                <th>Aksi</th>
+              <th class="center">No</th>
+              <th>Nama</th>
+              <th>Satuan</th>
+              <th>Kategori</th>
+              <th>Keterangan</th>
+              <th>Id Barang</th>
+              <th>Aksi</th>
               </tr>
             </thead>
             <tbody>
+              @php
+              $no = 1
+              @endphp
+
               @foreach($data as $d)
+              @php
+              $stok = $d->stok;
+              $ecer = $d->ecer;
+              $modal = $d->modal;
+              $toko = $d->toko;
+              $lusin = $d->lusin;
+              @endphp
               <tr>
-                <td>{{ $d->id }}</td>
-                <td>{{ $d->nama }}</td>
-                <td>{{ $d->keterangan }}</td>
+              <td class="center">{{ $no++ }}</td>
+              <td>{{ $d->nama }}</td>
+              <td>{{ $d->satuan->nama }}</td>
+              <td>{{ $d->kategori->nama }}</td>
+              <td>{{ $d->keterangan }}</td>
+              <td>{{ $d->id }}</td>
                 <td>
                   <div class="hidden-sm hidden-xs btn-group">
                     <!-- <button class="btn btn-xs btn-success">
@@ -35,16 +52,16 @@
                       <i class="ace-icon fa fa-eye bigger-120"></i>
                     </a> -->
 
-                    <a href="{{ route('master-satuan-barang.edit',[$d->id]) }}" class="btn btn-xs btn-warning"
+                    <a href="{{ route('master-barang.restore',[$d->id]) }}" class="btn btn-xs btn-warning"
                       data-step="5" data-intro="Langkah 5: Pilih tombol untuk edit master-kategori-barang">
-                      <i class="ace-icon fa fa-pencil bigger-120"></i>
+                      <i class="ace-icon fa fa-refresh bigger-120"></i>
                     </a>
 
-                    <a href="#" onclick="hapusAlert(event, '{{ $d->id }}')" class="btn btn-xs btn-danger" data-step="6"
+                    <a href="#" onclick="hapusAlert(event)" class="btn btn-xs btn-danger" data-step="6"
                       data-intro="Langkah 6: Pilih tombol untuk hapus master-kategori-barang">
                       <i class="ace-icon fa fa-trash-o bigger-120"></i>
                     </a>
-                    <form id="form-hapus-{{ $d->id }}" action="{{ route('master-satuan-barang.destroy',[$d->id]) }}" method="POST"
+                    <form id="delete" action="{{ route('master-barang.delete',[$d->id]) }}" method="POST"
                       style="display: none;">
                       @method('DELETE')
                       @csrf
@@ -70,22 +87,22 @@
                         </li> -->
 
                         <li>
-                          <a href="{{ route('master-satuan-barang.edit',[$d->id]) }}" class="tooltip-success"
+                          <a href="{{ route('master-barang.restore',[$d->id]) }}" class="tooltip-success"
                             data-rel="tooltip" title="Edit">
                             <span class="green">
-                              <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                              <i class="ace-icon fa fa-refresh bigger-120"></i>
                             </span>
                           </a>
                         </li>
 
                         <li>
-                          <a href="#" onclick="hapusAlert(event, '{{ $d->id }}')" class="tooltip-error" data-rel="tooltip"
+                          <a href="#" onclick="hapusAlert(event)" class="tooltip-error" data-rel="tooltip"
                             title="Delete">
                             <span class="red">
                               <i class="ace-icon fa fa-trash-o bigger-120"></i>
                             </span>
                           </a>
-                          <form id="form-hapus-{{ $d->id }}" action="{{ route('master-satuan-barang.destroy',[$d->id]) }}"
+                          <form id="delete" action="{{ route('master-barang.delete',[$d->id]) }}"
                             method="POST" style="display: none;">
                             @method('DELETE')
                             @csrf
@@ -98,7 +115,7 @@
               </tr>
 
               <script>
-                function hapusAlert(event,id) {
+                function hapusAlert(event) {
                   event.preventDefault();
                   Swal.fire({
                     title: 'Apa Anda Yakin?',
@@ -112,12 +129,7 @@
                     dangerMode: true,
                   }).then((result) => {
                     if (result.value) {
-                      const form = document.getElementById('form-hapus-' + id);
-                      if (form) {
-                        form.submit();
-                      } else {
-                        console.error("Form not found for ID:", id);
-                      }
+                      document.getElementById('delete').submit();
                     }
                   })
                 }

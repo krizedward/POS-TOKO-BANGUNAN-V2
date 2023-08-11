@@ -76,7 +76,7 @@
         </li>
 
         <li class="hover">
-          <a href="#">
+          <a href="{{ route('master-barang.index') }}">
             <i class="menu-icon fa fa-caret-right"></i>
             Barang
           </a>
@@ -84,7 +84,7 @@
           <b class="arrow"></b>
         </li>
 
-        <li class="hover">
+        <!-- <li class="hover">
           <a href="#">
             <i class="menu-icon fa fa-caret-right"></i>
             Gudang
@@ -118,7 +118,7 @@
           </a>
 
           <b class="arrow"></b>
-        </li>
+        </li> -->
       </ul>
     </li>
 
