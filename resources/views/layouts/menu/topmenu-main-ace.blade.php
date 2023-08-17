@@ -155,7 +155,7 @@
             </li>
 
             <li class="hover">
-              <a href="{{ route('barang-stok.index') }}">
+              <a href="{{ route('log-barang-masuk.index') }}">
                 <i class="menu-icon fa fa-caret-right"></i>
                 Riwayat Stok Masuk
               </a>
@@ -165,7 +165,7 @@
 
 
             <li class="hover">
-              <a href="#">
+              <a href="{{ route('log-barang-keluar.index') }}">
                 <i class="menu-icon fa fa-caret-right"></i>
                 Riwayat Stok Keluar
               </a>

@@ -10,12 +10,12 @@
   <!-- page-header -->
   <div class="page-header">
     <h1>
-      Riwayat Stok Keluar
+			Riwayat Stok Keluar
       <small data-step="1" 
         data-intro="Langkah 1: Halaman index form Produk Barang">
         <i class="ace-icon fa fa-angle-double-right"></i>
         <!-- top menu &amp; navigation -->
-        index page
+        show page
       </small>
     </h1>
   </div><!-- /.page-header -->
@@ -25,7 +25,6 @@
 @section('main')
   <div class="row">
     <div class="col-xs-12">
-
       <!-- <a href="#" class="btn btn-app btn-light btn-sm">
         <i class="ace-icon fa fa-print bigger-200"></i>
         Print
@@ -35,8 +34,8 @@
 
   <div class="space"></div>
 
-  @include('layouts.table.index_log_barang_masuk')
-
+	@include('layouts.detail.barang_stok_masuk_show')
+  
   <div class="center">
     <br />
     <br />

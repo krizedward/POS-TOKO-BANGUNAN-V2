@@ -1,0 +1,1 @@
+<h1>halaman barang stok keluar</h1>

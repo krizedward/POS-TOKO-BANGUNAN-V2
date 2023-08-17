@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('log_barang_keluar', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('master_barang_id')->nullable();
+            $table->unsignedBigInteger('barang_id')->nullable();
             $table->integer('banyak')->nullable();
             $table->date('waktu')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
             // relasi
-            $table->foreign('master_barang_id')
-            ->references('id')->on('master_barang')
+            $table->foreign('barang_id')
+            ->references('id')->on('barang_stok')
             ->onUpdate('cascade')
             ->onDelete('cascade');
         });

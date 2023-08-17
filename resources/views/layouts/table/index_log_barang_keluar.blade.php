@@ -17,7 +17,7 @@
       <div class="pull-right tableTools-container"></div>
     </div> -->
     <div class="table-header">
-      Tabel Barang Stok
+      Riwayat Stok Keluar 
     </div>
 
     <!-- div.table-responsive -->
@@ -48,10 +48,10 @@
           <tr>
             <th class="center">No</th>
             <th>Nama</th>
-            <th>Stok Masuk</th>
+            <th>Banyak</th>
             <th>Satuan</th>
-            <th>Stok Keluar</th>
-            <th>Satuan</th>
+            <th>Waktu</th>
+            <th>None</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -62,26 +62,26 @@
           @endphp
 
           @foreach($data as $d)
-
-          @php
-            $stok = $d->stok;
-            $ecer = $d->ecer;
-            $modal = $d->modal;
-            $toko = $d->toko;
-            $lusin = $d->lusin;
-          @endphp
+            @php
+              $stok = $d->stok;
+              $ecer = $d->ecer;
+              $modal = $d->modal;
+              $toko = $d->toko;
+              $lusin = $d->lusin;
+            @endphp
           <tr>
             <td class="center">{{ $no++ }}</td>
-            <td>{{ $d->masterBarang->nama }}</td>
-            <td>{{ $d->stok_masuk }}</td>
-            <td>{{ $d->masterSatuan->nama }}</td>
-            <td>{{ $d->stok_keluar }}</td>
-            <td>{{ $d->masterSatuan->nama }}</td>
+            <td>{{ $d->BarangStok->masterBarang->nama }}</td>
+            <td>{{ $d->banyak }}</td>
+            <td>{{ $d->BarangStok->masterSatuan->nama }}</td>
+            <td>{{ $d->waktu }}</td>
+            <td>none</td>
             <td>
               <div class="hidden-sm hidden-xs action-buttons">
-                <a class="blue" href="{{ route('barang-stok.show',[$d->id]) }}">
+                <a class="blue" href="{{ route('log-barang-keluar.show',[$d->id]) }}">
                   <i class="ace-icon fa fa-search-plus bigger-130"></i>
                 </a>
+
               </div>
 
               <div class="hidden-md hidden-lg">
@@ -93,7 +93,8 @@
                   <ul
                     class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
                     <li>
-                      <a href="{{ route('barang-stok.show',[$d->id]) }}" class="tooltip-info" data-rel="tooltip" title="View">
+                      <a href="{{ route('log-barang-keluar.show',[$d->id]) }}" class="tooltip-info" data-rel="tooltip"
+                        title="View">
                         <span class="blue">
                           <i class="ace-icon fa fa-search-plus bigger-120"></i>
                         </span>
@@ -132,5 +133,7 @@
 
   </div>
 </div>
+
+<div class="space"></div>
 
 <!-- PAGE CONTENT ENDS -->

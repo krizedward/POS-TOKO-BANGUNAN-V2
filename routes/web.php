@@ -6,6 +6,8 @@ use App\Http\Controllers\MasterKategoriBarangController;
 use App\Http\Controllers\MasterSatuanBarangController;
 use App\Http\Controllers\MasterBarangController;
 use App\Http\Controllers\BarangStokController;
+use App\Http\Controllers\LogBarangMasukController;
+use App\Http\Controllers\LogBarangKeluarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,14 +20,16 @@ use App\Http\Controllers\BarangStokController;
 */
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+// log barang keluar
+//Route::get('/log-barang-keluar', [LogBarangKeluarController::class, 'index'])->nama('log-barang-keluar.index');
+Route::get('/log-barang-keluar', [LogBarangKeluarController::class, 'index'])->name('log-barang-keluar.index');
+Route::get('/log-barang-keluar/{log_barang_keluar}', [LogBarangKeluarController::class, 'show'])->name('log-barang-keluar.show');
+// log barang masuk
+Route::get('/log-barang-masuk', [LogBarangMasukController::class, 'index'])->name('log-barang-masuk.index');
+Route::get('/log-barang-masuk/{log_barang_masuk}', [LogBarangMasukController::class, 'show'])->name('log-barang-masuk.show');
 //barang stok
 Route::get('/barang-stok', [BarangStokController::class, 'index'])->name('barang-stok.index');
-Route::get('/barang-stok/create', [BarangStokController::class, 'create'])->name('barang-stok.create');
-Route::post('/barang-stok/create', [BarangStokController::class, 'store'])->name('barang-stok.store');
 Route::get('/barang-stok/{barang_stok}', [BarangStokController::class, 'show'])->name('barang-stok.show');
-Route::get('/barang-stok/{barang_stok}/edit', [BarangStokController::class, 'edit'])->name('barang-stok.edit');
-Route::put('/barang-stok/{barang_stok}', [BarangStokController::class, 'update'])->name('barang-stok.update');
-Route::delete('/barang-stok/{barang_stok}', [BarangStokController::class, 'destroy'])->name('barang-stok.destroy');
 // master barang
 Route::get('/master-barang', [MasterBarangController::class, 'index'])->name('master-barang.index');
 Route::get('/master-barang/create', [MasterBarangController::class, 'create'])->name('master-barang.create');
