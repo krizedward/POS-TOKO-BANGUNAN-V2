@@ -62,33 +62,34 @@
           @endphp
 
           @foreach($data as $d)
+
           @php
-          $stok = $d->stok;
-          $ecer = $d->ecer;
-          $modal = $d->modal;
-          $toko = $d->toko;
-          $lusin = $d->lusin;
+            $stok = $d->stok;
+            $ecer = $d->ecer;
+            $modal = $d->modal;
+            $toko = $d->toko;
+            $lusin = $d->lusin;
           @endphp
           <tr>
             <td class="center">{{ $no++ }}</td>
-            <td>0</td>
-            <td>0</td>
-            <td>none</td>
-            <td>0</td>
-            <td>none</td>
+            <td>{{ $d->masterBarang->nama }}</td>
+            <td>{{ $d->stok_masuk }}</td>
+            <td>{{ $d->masterSatuan->nama }}</td>
+            <td>{{ $d->stok_keluar }}</td>
+            <td>{{ $d->masterSatuan->nama }}</td>
             <td>
               <div class="hidden-sm hidden-xs action-buttons">
                 <a class="blue" href="{{ route('barang-stok.show',[$d->id]) }}">
                   <i class="ace-icon fa fa-search-plus bigger-130"></i>
                 </a>
 
-                <a class="green" href="{{ route('barang-stok.edit',[$d->id]) }}">
+                <!-- <a class="green" href="{{ route('barang-stok.edit',[$d->id]) }}">
                   <i class="ace-icon fa fa-pencil bigger-130"></i>
-                </a>
+                </a> -->
 
-                <a class="red" href="#" onclick="hapusAlert(event)">
+                <!-- <a class="red" href="#" onclick="hapusAlert(event)">
                   <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                </a>
+                </a> -->
               </div>
 
               <div class="hidden-md hidden-lg">
@@ -107,15 +108,15 @@
                       </a>
                     </li>
 
-                    <li>
+                    <!-- <li>
                       <a href="{{ route('barang-stok.edit',[$d->id]) }}" class="tooltip-success" data-rel="tooltip" title="Edit">
                         <span class="green">
                           <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                         </span>
                       </a>
-                    </li>
+                    </li> -->
 
-                    <li>
+                    <!-- <li>
                       <a href="#" onclick="hapusAlert(event)" class="tooltip-error" data-rel="tooltip" title="Delete">
                         <span class="red">
                           <i class="ace-icon fa fa-trash-o bigger-120"></i>
@@ -125,7 +126,7 @@
                         @method('DELETE')
                         @csrf
                       </form>
-                    </li>
+                    </li> -->
                   </ul>
 
                 </div>

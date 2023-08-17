@@ -37,7 +37,7 @@ class BarangStok extends Model
         return $this->belongsTo(MasterBarang::class, 'master_barang_id');
     }
 
-    public function masterSatuanBarang()
+    public function masterSatuan()
     {
         return $this->belongsTo(MasterSatuanBarang::class, 'satuan_id');
     }

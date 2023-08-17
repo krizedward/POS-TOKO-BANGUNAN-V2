@@ -10,12 +10,12 @@
   <!-- page-header -->
   <div class="page-header">
     <h1>
-			Tabel Ringkasan Stok
+      Tabel Ringkasan Stok
       <small data-step="1" 
         data-intro="Langkah 1: Halaman index form Produk Barang">
         <i class="ace-icon fa fa-angle-double-right"></i>
         <!-- top menu &amp; navigation -->
-        index page
+        show page
       </small>
     </h1>
   </div><!-- /.page-header -->
@@ -34,7 +34,7 @@
 
   <div class="space"></div>
 
-	@include('layouts.table.index_barang_stok')
+	@include('layouts.detail.barang_stok_show')
   
   <div class="center">
     <br />
