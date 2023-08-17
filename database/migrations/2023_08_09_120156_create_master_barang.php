@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('keterangan')->nullable(); // untuk nama url
             //custom
             $table->unsignedBigInteger('kategori_id')->nullable();
-            $table->unsignedBigInteger('satuan_id')->nullable();
+            // $table->unsignedBigInteger('satuan_id')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
@@ -30,10 +30,10 @@ return new class extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->foreign('satuan_id')
-            ->references('id')->on('master_satuan_barang')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            // $table->foreign('satuan_id')
+            // ->references('id')->on('master_satuan_barang')
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
         });
     }
 

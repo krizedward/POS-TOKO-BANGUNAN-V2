@@ -25,14 +25,6 @@
 @section('main')
   <div class="row">
     <div class="col-xs-12">
-
-      <a href="{{ route('barang.create') }}" class="btn btn-app btn-primary btn-sm"
-      	data-step="2" data-intro="Langkah 2: Pilih tombol untuk tambah produk"
-			>
-        <i class="ace-icon fa fa-pencil-square-o bigger-200"></i>
-        Tambah
-      </a>
-
       <!-- <a href="#" class="btn btn-app btn-light btn-sm">
         <i class="ace-icon fa fa-print bigger-200"></i>
         Print

@@ -95,7 +95,7 @@
           <tr>
             <th class="center">No</th>
             <th>Nama</th>
-            <th>Satuan</th>
+            <th>None</th>
             <th>Kategori</th>
             <th>Keterangan</th>
             <th>Id Barang</th>
@@ -119,7 +119,7 @@
           <tr>
             <td class="center">{{ $no++ }}</td>
             <td>{{ $d->nama }}</td>
-            <td>{{ $d->satuan->nama }}</td>
+            <td>none</td>
             <td>{{ $d->kategori->nama }}</td>
             <td>{{ $d->keterangan }}</td>
             <td>{{ $d->id }}</td>

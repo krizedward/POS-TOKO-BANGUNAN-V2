@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MasterBarang;
-use App\Models\MasterSatuanBarang;
-use App\Models\MasterKategoriBarang;
+use App\Models\BarangStok;
 
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -15,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
-class MasterBarangController extends Controller
+class BarangStokController extends Controller
 {
     //
     public function index(): View 
@@ -23,11 +21,11 @@ class MasterBarangController extends Controller
         
         try {
 
-            $menu = 'master-barang';
-            $data = MasterBarang::all();
+            $menu = 'barang-stok';
+            $data = BarangStok::all();
             // $data = Barang::paginate(10);
             // return dd($data);
-            return view('production.master_barang.index', 
+            return view('production.barang_stok.index', 
             compact(
               'menu',
               'data',

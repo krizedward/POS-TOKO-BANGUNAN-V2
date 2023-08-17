@@ -122,6 +122,95 @@
       </ul>
     </li>
 
+    <!-- barang -->
+    <li class="hover">
+      <a href="#" class="dropdown-toggle">
+        <i class="menu-icon fa fa-list"></i>
+        <span class="menu-text"> Barang </span>
+
+        <b class="arrow fa fa-angle-down"></b>
+      </a>
+
+      <b class="arrow"></b>
+
+      <ul class="submenu">
+
+        <li class="hover">
+          <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-caret-right"></i>
+            Stok
+            <b class="arrow fa fa-angle-down"></b>
+          </a>
+
+          <b class="arrow"></b>
+
+          <ul class="submenu">
+            <li class="hover">
+              <a href="{{ route('barang-stok.index') }}">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Tabel Ringkasan Stok
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="{{ route('barang-stok.index') }}">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Riwayat Stok Masuk
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+
+            <li class="hover">
+              <a href="#">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Riwayat Stok Keluar
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+          </ul>
+        </li>
+
+        <li class="hover">
+          <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-caret-right"></i>
+
+            Harga
+            <b class="arrow fa fa-angle-down"></b>
+          </a>
+
+          <b class="arrow"></b>
+
+          <ul class="submenu">
+            <li class="hover">
+              <a href="#">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Harga Jual
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="#">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Harga Beli
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
+    </li>
+
     <!-- transaksi -->
     <li class="hover">
       <a href="#" class="dropdown-toggle">
@@ -173,104 +262,6 @@
     </li>
 
     <!-- <li class="hover">
-      <a href="#" class="dropdown-toggle">
-        <i class="menu-icon fa fa-list"></i>
-        <span class="menu-text"> Tables </span>
-
-        <b class="arrow fa fa-angle-down"></b>
-      </a>
-
-      <b class="arrow"></b>
-
-      <ul class="submenu">
-        <li class="hover">
-          <a href="tables.html">
-            <i class="menu-icon fa fa-caret-right"></i>
-            Simple &amp; Dynamic
-          </a>
-
-          <b class="arrow"></b>
-        </li>
-
-        <li class="active open hover">
-          <a href="#" class="dropdown-toggle">
-            <i class="menu-icon fa fa-caret-right"></i>
-
-            Layouts
-            <b class="arrow fa fa-angle-down"></b>
-          </a>
-
-          <b class="arrow"></b>
-
-          <ul class="submenu">
-            <li class="active hover">
-              <a href="top-menu.html">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Top Menu
-              </a>
-
-              <b class="arrow"></b>
-            </li>
-
-            <li class="hover">
-              <a href="two-menu-1.html">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Two Menus 1
-              </a>
-
-              <b class="arrow"></b>
-            </li>
-
-            <li class="hover">
-              <a href="two-menu-2.html">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Two Menus 2
-              </a>
-
-              <b class="arrow"></b>
-            </li>
-
-            <li class="hover">
-              <a href="mobile-menu-1.html">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Default Mobile Menu
-              </a>
-
-              <b class="arrow"></b>
-            </li>
-
-            <li class="hover">
-              <a href="mobile-menu-2.html">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Mobile Menu 2
-              </a>
-
-              <b class="arrow"></b>
-            </li>
-
-            <li class="hover">
-              <a href="mobile-menu-3.html">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Mobile Menu 3
-              </a>
-
-              <b class="arrow"></b>
-            </li>
-          </ul>
-        </li>
-
-        <li class="hover">
-          <a href="jqgrid.html">
-            <i class="menu-icon fa fa-caret-right"></i>
-            jqGrid plugin
-          </a>
-
-          <b class="arrow"></b>
-        </li>
-      </ul>
-    </li>
-
-    <li class="hover">
       <a href="#" class="dropdown-toggle">
         <i class="menu-icon fa fa-pencil-square-o"></i>
         <span class="menu-text"> Forms </span>

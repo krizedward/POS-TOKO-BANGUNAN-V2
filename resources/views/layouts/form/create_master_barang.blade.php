@@ -46,21 +46,6 @@
       </div>
     </div>
 
-    <!-- Kategori Barang -->
-    <div class="form-group">
-      <label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">
-        Satuan
-      </label>
-      <div class="col-sm-9">
-        <select name="satuan_id" class="col-xs-10 col-sm-5" id="form-field-select-1">
-          <option value="">Pilih Satuan</option>
-          @foreach ($MasterSatuanBarang as $data)
-          <option value="{{ $data->id }}">{{ $data->nama }}</option>
-          @endforeach
-        </select>
-      </div>
-    </div>
-
   </form>
 
   <div class="clearfix form-actions">

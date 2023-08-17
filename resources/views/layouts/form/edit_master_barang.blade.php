@@ -49,26 +49,7 @@
         </select>
       </div>
     </div>
-
-    <!-- Kategori Barang -->
-    <div class="form-group">
-      <label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">
-        Satuan
-      </label>
-      @php 
-        $selectedSatuanId = $data->satuan_id;
-      @endphp
-      <div class="col-sm-9">
-        <select name="satuan_id" class="col-xs-10 col-sm-5" id="form-field-select-1">
-          @foreach ($MasterSatuanBarang as $data)
-          <option value="{{ $data->id }}" {{ $data->id == $selectedSatuanId ? 'selected' : '' }}>
-            {{ $data->nama }}
-          </option>
-          @endforeach
-        </select>
-      </div>
-    </div>
-
+    
   </form>
 
   <div class="clearfix form-actions">

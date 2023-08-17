@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MasterBarang extends Model
+class BarangStok extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -19,24 +19,27 @@ class MasterBarang extends Model
      */
     
     protected $primaryKey = 'id';
-    protected $table = 'master_barang';
+    protected $table = 'barang_stok';
     protected $dates = ['deleted_at'];
-      
+       
     protected $fillable = [
-        'nama',
-        'slug',
-        'keterangan',
-        'kategori_id',
+        'master_barang_id',
+        'ukuran_barang',
+        'satuan_id',
+        'stok_masuk',
+        'stok_keluar',
+        'status_stok',
         // 'satuan_id',
     ];
- 
-    // public function satuan()
-    // {
-    //     return $this->belongsTo('App\Models\MasterSatuanBarang', 'satuan_id');
-    // }
 
-    public function kategori()
+    public function masterBarang()
     {
-        return $this->belongsTo('App\Models\MasterKategoriBarang', 'kategori_id');
+        return $this->belongsTo(MasterBarang::class, 'master_barang_id');
     }
+
+    public function masterSatuanBarang()
+    {
+        return $this->belongsTo(MasterSatuanBarang::class, 'satuan_id');
+    }
+
 }
