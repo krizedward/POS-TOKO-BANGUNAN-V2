@@ -190,20 +190,20 @@
             <li class="hover">
               <a href="#">
                 <i class="menu-icon fa fa-caret-right"></i>
-                Harga Jual
+                Harga Modal
               </a>
 
               <b class="arrow"></b>
             </li>
 
-            <li class="hover">
+            <!-- <li class="hover">
               <a href="#">
                 <i class="menu-icon fa fa-caret-right"></i>
                 Harga Beli
               </a>
 
               <b class="arrow"></b>
-            </li>
+            </li> -->
 
           </ul>
         </li>

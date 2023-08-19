@@ -17,7 +17,7 @@
     Dashboard
     <small>
       <i class="ace-icon fa fa-angle-double-right"></i>
-      Ringkasan Semua Fitur
+      Ringkasan Semua Fitur Yang Ada
     </small>
   </h1>
 </div><!-- /.page-header -->
@@ -202,6 +202,112 @@
 
     </div><!-- /.widget-box -->
   </div>
+</div>
+<div class="space"></div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="widget-box">
+
+      <div class="widget-header widget-header-flat widget-header-small">
+        <h5 class="widget-title">Tabel Barang Masuk</h5>
+      </div>
+
+      <div class="widget-body">
+        <div class="widget-main">
+          <table class="table  table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Jumlah</th>
+              </tr>
+            </thead>
+            <tbody>
+              @php
+                $no = 0;
+                $total = 0;
+                $currentDate = strtotime($startDate);
+                $endTimestamp = strtotime($endDate);
+              @endphp
+
+              @while ($currentDate <= $endTimestamp) @php $no++; $date=date('j F Y', $currentDate); 
+              // Perform anynecessary calculations or operations here, if applicable. // Output the table row @endphp 
+                <tr>
+                  <td>{{ $no }}</td>
+                  <td>{{ $date }}</td>
+                  <td>0 Item</td>
+                </tr>
+                @php
+                // Move to the next date (increment by one day)
+                $currentDate = strtotime('+1 day', $currentDate);
+
+                // You can also unset any variables here if they are no longer needed to free up memory.
+                @endphp
+              @endwhile
+                <tr>
+                  <td></td>
+                  <td>Total Jumlah</td>
+                  <td>{{ number_format($total) }} Item</td>
+                </tr>
+            </tbody>
+          </table>
+        </div><!-- /.widget-main -->
+      </div><!-- /.widget-body -->
+
+    </div><!-- /.widget-box -->
+  </div><!-- /.col -->
+
+  <div class="col-sm-6">
+    <div class="widget-box">
+
+      <div class="widget-header widget-header-flat widget-header-small">
+        <h5 class="widget-title">Tabel Barang Keluar</h5>
+      </div>
+
+      <div class="widget-body">
+        <div class="widget-main">
+          <table class="table  table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Jumlah</th>
+              </tr>
+            </thead>
+            <tbody>
+              @php
+                $no = 0;
+                $total = 0;
+                $currentDate = strtotime($startDate);
+                $endTimestamp = strtotime($endDate);
+              @endphp
+
+              @while ($currentDate <= $endTimestamp) @php $no++; $date=date('j F Y', $currentDate); 
+              // Perform anynecessary calculations or operations here, if applicable. // Output the table row @endphp 
+                <tr>
+                  <td>{{ $no }}</td>
+                  <td>{{ $date }}</td>
+                  <td>0 Item</td>
+                </tr>
+                @php
+                // Move to the next date (increment by one day)
+                $currentDate = strtotime('+1 day', $currentDate);
+
+                // You can also unset any variables here if they are no longer needed to free up memory.
+                @endphp
+              @endwhile
+                <tr>
+                  <td></td>
+                  <td>Total Jumlah</td>
+                  <td>{{ number_format($total) }} Item</td>
+                </tr>
+            </tbody>
+          </table>
+        </div><!-- /.widget-main -->
+      </div><!-- /.widget-body -->
+
+    </div><!-- /.widget-box -->
+  </div><!-- /.col -->
 </div>
 @endsection
 

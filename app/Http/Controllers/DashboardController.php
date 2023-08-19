@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 // use App\Models\Produk;
+use App\Models\LogBarangMasuk;
 
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\RedirectResponse;
@@ -26,7 +27,12 @@ class DashboardController extends Controller
       //     'total',
       // ));
       try {
-        
+        // untuk tampilan tanggal
+        $startDate = date('Y-m-d', mktime(0,0,0, date('m'), 1, date('Y')));
+        $endDate = date('Y-m-d');
+        $data = LogBarangMasuk::all();
+
+        // variable
         $menu = 'dashboard';
         $total = 0;
         
@@ -36,6 +42,8 @@ class DashboardController extends Controller
           compact(
             'menu',
             'total',
+            'startDate', 
+            'endDate',
           ));
 
       } catch (\Exception $e) {
