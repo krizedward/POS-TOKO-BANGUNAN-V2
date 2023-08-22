@@ -31,7 +31,7 @@ class LogBarangKeluar extends Model
         // 'satuan_id',
     ];
  
-    public function BarangStok()
+    public function barangStok()
     {
         return $this->belongsTo(BarangStok::class, 'barang_id');
     }

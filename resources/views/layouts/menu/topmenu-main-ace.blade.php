@@ -188,9 +188,27 @@
 
           <ul class="submenu">
             <li class="hover">
-              <a href="#">
+              <a href="{{ route('harga-barang-modal.index') }}">
                 <i class="menu-icon fa fa-caret-right"></i>
                 Harga Modal
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="{{ route('harga-barang-lusin.index') }}">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Harga Lusin
+              </a>
+
+              <b class="arrow"></b>
+            </li>
+
+            <li class="hover">
+              <a href="{{ route('harga-barang-ecer.index') }}">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Harga Ecer
               </a>
 
               <b class="arrow"></b>
@@ -199,7 +217,7 @@
             <!-- <li class="hover">
               <a href="#">
                 <i class="menu-icon fa fa-caret-right"></i>
-                Harga Beli
+                Harga Umum
               </a>
 
               <b class="arrow"></b>

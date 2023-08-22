@@ -17,7 +17,7 @@ class LogBarangKeluarTableSeeder extends Seeder
         //
         $datas = array(
             array('barang_id' => '1' , 'banyak' => '1'),
-            array('barang_id' => '2' , 'banyak' => '2'),
+            // array('barang_id' => '2' , 'banyak' => '2'),
         );
 
         foreach ($datas as $data) {

@@ -8,6 +8,10 @@ use App\Http\Controllers\MasterBarangController;
 use App\Http\Controllers\BarangStokController;
 use App\Http\Controllers\LogBarangMasukController;
 use App\Http\Controllers\LogBarangKeluarController;
+use App\Http\Controllers\HargaBarangModalController;
+use App\Http\Controllers\HargaBarangLusinController;
+use App\Http\Controllers\HargaBarangEcerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +24,12 @@ use App\Http\Controllers\LogBarangKeluarController;
 */
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+// harga barang modal
+Route::get('/harga-barang-ecer', [HargaBarangEcerController::class, 'index'])->name('harga-barang-ecer.index');
+// harga barang modal
+Route::get('/harga-barang-lusin', [HargaBarangLusinController::class, 'index'])->name('harga-barang-lusin.index');
+// harga barang modal
+Route::get('/harga-barang-modal', [HargaBarangModalController::class, 'index'])->name('harga-barang-modal.index');
 // log barang keluar
 //Route::get('/log-barang-keluar', [LogBarangKeluarController::class, 'index'])->nama('log-barang-keluar.index');
 Route::get('/log-barang-keluar', [LogBarangKeluarController::class, 'index'])->name('log-barang-keluar.index');

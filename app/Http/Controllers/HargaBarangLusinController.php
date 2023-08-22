@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\MasterBarang;
-// use App\Models\MasterSatuanBarang;
-// use App\Models\MasterKategoriBarang;
-use App\Models\HargaBarangModal;
+use App\Models\HargaBarangLusin;
 
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -16,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
-class HargaBarangModalController extends Controller
+class HargaBarangLusinController extends Controller
 {
     //
     public function index(): View 
@@ -24,10 +21,10 @@ class HargaBarangModalController extends Controller
         try {
 
             $menu = 'harga-barang-modal';
-            $data = HargaBarangModal::all();
+            $data = HargaBarangLusin::all();
             // $data = Barang::paginate(10);
             // return dd($data);
-            return view('production.harga_barang_modal.index', 
+            return view('production.harga_barang_lusin.index', 
             
             compact(
               'menu',
@@ -41,10 +38,10 @@ class HargaBarangModalController extends Controller
         }
     }
 
-    public function show(LogBarangKeluar $id): View 
+    public function show(HargaBarangLusin $id): View 
     {
         try {
-            $data = LogBarangKeluar::find($id);
+            $data = HargaBarangLusin::find($id);
             $menu = 'barang-stok';
             return view('production.log_barang_keluar.show', 
             compact(

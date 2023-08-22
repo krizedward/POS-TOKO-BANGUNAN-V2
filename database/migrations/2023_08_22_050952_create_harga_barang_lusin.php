@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('harga_barang_modal', function (Blueprint $table) {
+        Schema::create('harga_barang_lusin', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('barang_id')->nullable();
             $table->integer('jumlah')->nullable();
@@ -22,11 +22,11 @@ return new class extends Migration
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
             
-           // relasi
-           $table->foreign('barang_id')
-           ->references('id')->on('barang_stok')
-           ->onUpdate('cascade')
-           ->onDelete('cascade');
+            // relasi
+            $table->foreign('barang_id')
+            ->references('id')->on('barang_stok')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('harga_barang_modal');
+        Schema::dropIfExists('harga_barang_lusin');
     }
 };

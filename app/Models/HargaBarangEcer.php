@@ -6,22 +6,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HargaBarangModal extends Model
+class HargaBarangEcer extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     /**
      * Next Step.
-     * php artisan make:seeder KategoriBarangTableSeeder
-     * php artisan db:seed --class=KategoriBarangTableSeeder
+     * php artisan make:seeder HargaBarangLusinTableSeeder
+     * php artisan db:seed --class=HargaBarangLusinTableSeeder
      * Happy Coding :)
      */
     
     protected $primaryKey = 'id';
-    protected $table = 'harga_barang_modal';
+    protected $table = 'harga_barang_ecer';
     protected $dates = ['deleted_at'];
-        
+ 
     protected $fillable = [
         'barang_id', // barang stok
         'jumlah',
@@ -29,7 +29,7 @@ class HargaBarangModal extends Model
         'tanggal_harga',
         // 'satuan_id',
     ];
- 
+
     public function barangStok()
     {
         return $this->belongsTo(BarangStok::class, 'barang_id');
