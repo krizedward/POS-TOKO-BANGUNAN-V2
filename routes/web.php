@@ -39,6 +39,8 @@ Route::get('/log-barang-masuk', [LogBarangMasukController::class, 'index'])->nam
 Route::get('/log-barang-masuk/{log_barang_masuk}', [LogBarangMasukController::class, 'show'])->name('log-barang-masuk.show');
 //barang stok
 Route::get('/barang-stok', [BarangStokController::class, 'index'])->name('barang-stok.index');
+Route::get('/barang-stok/create', [BarangStokController::class, 'create'])->name('barang-stok.create');
+Route::post('/barang-stok/create', [BarangStokController::class, 'store'])->name('barang-stok.store');
 Route::get('/barang-stok/{barang_stok}', [BarangStokController::class, 'show'])->name('barang-stok.show');
 // master barang
 Route::get('/master-barang', [MasterBarangController::class, 'index'])->name('master-barang.index');
