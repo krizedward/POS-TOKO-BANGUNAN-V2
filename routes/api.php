@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\ApiController;
+use App\Http\Controllers\API\MasterBarangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// php artisan make:controller API/MasterBarangController --api
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/', [ApiController::class, 'index']);
+
+Route::get('/master-barang', [MasterBarangController::class, 'index']);
