@@ -25,3 +25,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/', [ApiController::class, 'index']);
 
 Route::get('/master-barang', [MasterBarangController::class, 'index']);
+Route::post('/master-barang/store', [MasterBarangController::class, 'store']);
+
+// Route::post('/member-award/store', [MemberAwardController::class, 'store']);
+// Route::get('/member-award/{id}/show', [MemberAwardController::class, 'show']);
+// Route::put('/member-award/{id}/update', [MemberAwardController::class, 'update']);
+// Route::delete('/member-award/{id}/delete', [MemberAwardController::class, 'destroy']);

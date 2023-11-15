@@ -7,6 +7,7 @@ use App\Models\MasterBarang;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class MasterBarangController extends Controller
 {
@@ -39,6 +40,42 @@ class MasterBarangController extends Controller
      */
     public function store(Request $request)
     {
+        //
+        try {
+            // validator
+            $request->validate([
+                'nama' => 'required',
+                'keterangan' => 'required',
+                'kategori_id' => 'required',
+                // 'quantity_purchased' => 'integer|nullable',
+                // 'status' => 'in:paid,unpaid',
+                // Anda dapat menambahkan validasi tambahan sesuai kebutuhan Anda
+            ]);
+
+            // proses
+            $data = MasterBarang::create([
+                'nama' => $request->nama,
+                'keterangan' => $request->keterangan,
+                'kategori_id' => $request->kategori_id,
+                'slug' => Str::slug($request->nama), 
+            ]);
+    
+            return response()->json([
+              'status' => 201,
+              'status_message' => 'success',
+              'text_message' => 'Data berhasil disimpan',
+              'data' => $data,
+            ], 201);
+
+        } catch (\Exception $e) {
+            //
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Gagal memasukan data',
+                'error' => $e->getMessage(),
+            ], 500);
+            //
+        }
         //
     }
 
