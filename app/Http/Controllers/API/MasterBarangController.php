@@ -87,7 +87,24 @@ class MasterBarangController extends Controller
      */
     public function show($id)
     {
-        //
+        // coming soon
+        try {
+            $data = MasterBarang::where('id',$id)->first();
+
+            return response()->json([
+                'status' => 200,
+                'status_message' => 'success',
+                'text_message' => 'Data berhasil ditampilkan',
+                'data' => $data,
+            ], 200);
+        } catch (\Excetption $e) {
+            return response()->json([
+              'status' => 'error',
+              'message' => 'Gagal menyimpan data',
+              'error' => $e->getMessage(),
+            ], 500);
+        }
+        
     }
 
     /**

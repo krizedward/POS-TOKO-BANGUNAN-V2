@@ -26,6 +26,7 @@ Route::get('/', [ApiController::class, 'index']);
 
 Route::get('/master-barang', [MasterBarangController::class, 'index']);
 Route::post('/master-barang/store', [MasterBarangController::class, 'store']);
+Route::get('/master-barang/{id}/show', [MasterBarangController::class, 'show']);
 
 // Route::post('/member-award/store', [MemberAwardController::class, 'store']);
 // Route::get('/member-award/{id}/show', [MemberAwardController::class, 'show']);
