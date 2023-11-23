@@ -117,6 +117,34 @@ class MasterBarangController extends Controller
     public function update(Request $request, $id)
     {
         //
+        // Validasi input
+        // $request->validate([
+        //     'nama' => 'required',
+        //     'keterangan' => 'required',
+        //     'keterangan' => 'required',
+        //     'kategori_id' => 'required',
+        // // Tambahkan validasi sesuai kebutuhan
+        // ]);
+
+        // $data = MasterBarang::where('id',$id)->first();
+
+        $data = MasterBarang::where('id',$id)->update([
+            'nama' => $request->nama,
+            'keterangan' => $request->keterangan,
+            'kategori_id' => $request->kategori_id,
+            'slug' => Str::slug($request->nama),
+            // 'deskripsi' => $request->deskripsi,
+            // 'nama' => $request->nama,
+            // 'slug' => Str::slug($request->nama),
+            // 'nickname' => $request->nickname,
+        ]);
+
+        return response()->json([
+            'status' => 200,
+            'status_message' => 'success',
+            'text_message' => 'Data berhasil mengubah data',
+            'data' => $data,
+        ], 200);
     }
 
     /**
@@ -128,5 +156,13 @@ class MasterBarangController extends Controller
     public function destroy($id)
     {
         //
+        $data = MasterBarang::findOrFail($id);
+        $data->delete();
+
+        return response()->json([
+            'status' => 200,
+            'status_message' => 'success',
+            'text_message' => 'Data berhasil dihapus'
+        ], 204);
     }
 }
