@@ -20,14 +20,22 @@ class MasterBarangController extends Controller
     {
         //
         // $data = MasterBarang::all();
-        // return response()->json(['message' => 'Success'], 200);
 
-        $data = MasterBarang::all();
+        $masterBarangs = MasterBarang::all();
+        
+        $data = [];
+
+        foreach ($masterBarangs as $masterBarang) {
+            $data[] = [
+                'id' => $masterBarang->id,
+                'nama' => $masterBarang->nama,
+                'kategori' => $masterBarang->kategori->nama,
+                // Tambahkan data lain yang ingin ditampilkan di sini
+            ];
+        }
 
         return response()->json([
             'status' => 200,
-            'status_message' => 'success',
-            'text_message' => 'Data Master Barang Berhasil Ditampilkan',
             'data' => $data,
         ], 200);
     }
@@ -64,7 +72,7 @@ class MasterBarangController extends Controller
               'status' => 201,
               'status_message' => 'success',
               'text_message' => 'Data berhasil disimpan',
-              'data' => $data,
+            //   'data' => $data,
             ], 201);
 
         } catch (\Exception $e) {
@@ -89,14 +97,19 @@ class MasterBarangController extends Controller
     {
         // coming soon
         try {
-            $data = MasterBarang::where('id',$id)->first();
+            $masterBarang  = MasterBarang::where('id',$id)->first();
+
+            $data = [
+                'nama' => $masterBarang->nama,
+                'kategori' => $masterBarang->kategori->nama,
+                // Tambahkan data lain yang ingin ditampilkan di sini
+            ];
 
             return response()->json([
                 'status' => 200,
-                'status_message' => 'success',
-                'text_message' => 'Data berhasil ditampilkan',
                 'data' => $data,
             ], 200);
+            
         } catch (\Excetption $e) {
             return response()->json([
               'status' => 'error',
@@ -143,7 +156,7 @@ class MasterBarangController extends Controller
             'status' => 200,
             'status_message' => 'success',
             'text_message' => 'Data berhasil mengubah data',
-            'data' => $data,
+            // 'data' => $data,
         ], 200);
     }
 
