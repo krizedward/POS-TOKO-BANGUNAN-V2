@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
             HargaBarangLusinTableSeeder::class,
             HargaBarangEcerTableSeeder::class,
             
+            BarangTableSeeder::class,
+            
             // KategoriBarangTableSeeder::class,
             // BarangSatuanTableSeeder::class,
             // BarangTableSeeder::class,

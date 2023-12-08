@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ApiController;
 use App\Http\Controllers\API\MasterBarangController;
+use App\Http\Controllers\API\BarangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,12 @@ Route::post('/master-barang/store', [MasterBarangController::class, 'store']);
 Route::get('/master-barang/{id}/show', [MasterBarangController::class, 'show']);
 Route::put('/master-barang/{id}/update', [MasterBarangController::class, 'update']);
 Route::delete('/master-barang/{id}/delete', [MasterBarangController::class, 'destroy']);
+
+Route::get('/barang', [BarangController::class, 'index']);
+Route::post('/barang/store', [BarangController::class, 'store']);
+Route::get('/barang/{id}/show', [BarangController::class, 'show']);
+Route::put('/barang/{id}/update', [BarangController::class, 'update']);
+Route::delete('/barang/{id}/delete', [BarangController::class, 'destroy']);
 
 // Route::post('/member-award/store', [MemberAwardController::class, 'store']);
 // Route::get('/member-award/{id}/show', [MemberAwardController::class, 'show']);
