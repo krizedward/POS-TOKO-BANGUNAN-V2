@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ApiController;
 use App\Http\Controllers\API\MasterBarangController;
 use App\Http\Controllers\API\BarangController;
+use App\Http\Controllers\API\KategoriBarangUmumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,12 @@ Route::post('/barang/store', [BarangController::class, 'store']);
 Route::get('/barang/{id}/show', [BarangController::class, 'show']);
 Route::put('/barang/{id}/update', [BarangController::class, 'update']);
 Route::delete('/barang/{id}/delete', [BarangController::class, 'destroy']);
+
+Route::get('/kategori-barang-umum', [KategoriBarangUmumController::class, 'index']);
+Route::post('/kategori-barang-umum/store', [KategoriBarangUmumController::class, 'store']);
+Route::get('/kategori-barang-umum/{id}/show', [KategoriBarangUmumController::class, 'show']);
+Route::put('/kategori-barang-umum/{id}/update', [KategoriBarangUmumController::class, 'update']);
+Route::delete('/kategori-barang-umum/{id}/delete', [KategoriBarangUmumController::class, 'destroy']);
 
 // Route::post('/member-award/store', [MemberAwardController::class, 'store']);
 // Route::get('/member-award/{id}/show', [MemberAwardController::class, 'show']);
