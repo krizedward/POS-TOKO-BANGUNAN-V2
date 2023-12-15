@@ -17,8 +17,6 @@ return new class extends Migration
             // $table->id();
             $table->bigIncrements('id');
             $table->string('nama')->nullable();
-            $table->string('harga')->nullable();
-            $table->string('kategori')->nullable();
             $table->timestamps();
         });
     }

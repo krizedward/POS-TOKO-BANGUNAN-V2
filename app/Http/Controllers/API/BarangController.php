@@ -23,22 +23,10 @@ class BarangController extends Controller
         $data = [];
         $barangs = Barang::all();
 
-        $datas = [
-            'id' => '1',
-            'nama' => 'Semen Tiga Roda',
-            'harga' => '20000',
-            'kategori_id' => '1', // bahan bangunan
-            'slug' => 'semen-tiga-roda'
-            // untuk mencari barang dipencarian
-        ]; // barang itu ringkasan dari semua tabel untuk 
-        // mencari data yang ada
-
         foreach ($barangs as $barang) {
             $data[] = [
                 'id' => $barang->id,
                 'nama' => $barang->nama,
-                'harga' => $barang->harga,
-                'kategori' => $barang->kategori,
             ];
         }
 
