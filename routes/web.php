@@ -23,7 +23,10 @@ use App\Http\Controllers\HargaBarangEcerController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', function (){
+  return 'berhasil';
+});
+// Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 // harga barang modal
 Route::get('/harga-barang-ecer', [HargaBarangEcerController::class, 'index'])->name('harga-barang-ecer.index');
 // harga barang modal

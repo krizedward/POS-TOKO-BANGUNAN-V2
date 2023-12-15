@@ -7,6 +7,7 @@ use App\Http\Controllers\API\MasterBarangController;
 use App\Http\Controllers\API\BarangController;
 use App\Http\Controllers\API\KategoriBarangUmumController;
 use App\Http\Controllers\API\MasterKategoriBarangController;
+use App\Http\Controllers\API\BarangStokController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,12 @@ Route::post('/master-kategori-barang/store', [MasterKategoriBarangController::cl
 Route::get('/master-kategori-barang/{id}/show', [MasterKategoriBarangController::class, 'show']);
 Route::put('/master-kategori-barang/{id}/update', [MasterKategoriBarangController::class, 'update']);
 Route::delete('/master-kategori-barang/{id}/delete', [MasterKategoriBarangController::class, 'destroy']);
+
+Route::get('/barang-stok', [BarangStokController::class, 'index']);
+Route::post('/barang-stok/store', [BarangStokController::class, 'store']);
+Route::get('/barang-stok/{id}/show', [BarangStokController::class, 'show']);
+Route::put('/barang-stok/{id}/update', [BarangStokController::class, 'update']);
+Route::delete('/barang-stok/{id}/delete', [BarangStokController::class, 'destroy']);
 
 // Route::post('/member-award/store', [MemberAwardController::class, 'store']);
 // Route::get('/member-award/{id}/show', [MemberAwardController::class, 'show']);
