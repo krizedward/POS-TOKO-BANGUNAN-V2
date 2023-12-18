@@ -23,8 +23,13 @@ return new class extends Migration
             $table->timestamps();
             
            // relasi
+        //    $table->foreign('barang_id')
+        //    ->references('id')->on('barang_stok')
+        //    ->onUpdate('cascade')
+        //    ->onDelete('cascade');
+
            $table->foreign('barang_id')
-           ->references('id')->on('barang_stok')
+           ->references('id')->on('barang')
            ->onUpdate('cascade')
            ->onDelete('cascade');
         });

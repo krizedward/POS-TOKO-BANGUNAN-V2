@@ -20,7 +20,7 @@ class HargaBarangModalTableSeeder extends Seeder
         HargaBarangModal::create([
             'barang_id' => 1, // barang stok
             'jumlah' => 1,
-            'harga' => 1,
+            'harga' => 25000,
         ]);
     }
 }
