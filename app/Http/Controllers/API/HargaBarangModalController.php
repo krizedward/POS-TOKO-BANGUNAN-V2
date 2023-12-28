@@ -23,6 +23,7 @@ class HargaBarangModalController extends Controller
 
         foreach ($hargas as $harga) {
             $data[] = [
+                'id' => $harga->id,
                 'nama_barang' => $harga->barang->nama,
                 'harga_barang' => $harga->harga,
                 'jumlah_barang' => $harga->jumlah,
