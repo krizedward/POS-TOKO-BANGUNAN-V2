@@ -96,11 +96,15 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // validate
+        $request->validate([
+            'nama' => 'reqired',
+        ]);
+
         $data = Barang::where('id',$id)->update([
             'nama' => $request->nama,
-            'harga' => $request->harga,
-            'kategori' => $request->kategori,
+            // 'harga' => $request->harga,
+            // 'kategori' => $request->kategori,
             // 'slug' => Str::slug($request->nama),
             // 'deskripsi' => $request->deskripsi,
             // 'nama' => $request->nama,
