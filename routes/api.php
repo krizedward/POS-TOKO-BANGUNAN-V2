@@ -9,6 +9,7 @@ use App\Http\Controllers\API\KategoriBarangUmumController;
 use App\Http\Controllers\API\MasterKategoriBarangController;
 use App\Http\Controllers\API\BarangStokController;
 use App\Http\Controllers\API\HargaBarangModalController;
+use App\Http\Controllers\API\BarangSatuanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,16 @@ Route::get('/harga-barang-modal/trash', [HargaBarangModalController::class, 'tra
 Route::get('/harga-barang-modal/{id}/restore', [HargaBarangModalController::class, 'restore']);
 Route::get('/harga-barang-modal/all-restore', [HargaBarangModalController::class, 'allrestore']);
 Route::delete('/harga-barang-modal/force-delete', [HargaBarangModalController::class, 'forcerestore']);
+
+Route::get('/barang-satuan', [BarangSatuanController::class, 'index']);
+Route::post('/barang-satuan/store', [BarangSatuanController::class, 'store']);
+Route::get('/barang-satuan/{id}/show', [BarangSatuanController::class, 'show']);
+Route::put('/barang-satuan/{id}/update', [BarangSatuanController::class, 'update']);
+Route::delete('/barang-satuan/{id}/delete', [BarangSatuanController::class, 'destroy']);
+Route::get('/barang-satuan/trash', [BarangSatuanController::class, 'trash']);
+Route::get('/barang-satuan/{id}/restore', [BarangSatuanController::class, 'restore']);
+Route::get('/barang-satuan/all-restore', [BarangSatuanController::class, 'allrestore']);
+Route::delete('/barang-satuan/force-delete', [BarangSatuanController::class, 'forcerestore']);
 
 // Route::post('/member-award/store', [MemberAwardController::class, 'store']);
 // Route::get('/member-award/{id}/show', [MemberAwardController::class, 'show']);
