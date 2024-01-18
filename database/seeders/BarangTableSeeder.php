@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Barang;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -823,7 +824,7 @@ class BarangTableSeeder extends Seeder
         foreach ($datas as $data) {
             $barang = Barang::firstOrCreate(
                 ['nama' => $data['nama']],
-                // ['slug' => Str::slug($data['nama'])]
+                ['slug' => Str::slug($data['nama'])]
             );
             
             // ambil id

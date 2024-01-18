@@ -27,6 +27,7 @@ class BarangController extends Controller
             $data[] = [
                 'id' => $barang->id,
                 'nama' => $barang->nama,
+                'slug' => $barang->slug,
             ];
         }
 

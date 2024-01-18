@@ -21,5 +21,6 @@ class Barang extends Model
 
     protected $fillable = [
         'nama',
+        'slug',
     ];
 }
