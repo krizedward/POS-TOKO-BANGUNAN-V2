@@ -24,6 +24,7 @@ class HargaBarangModal extends Model
         
     protected $fillable = [
         'barang_id', // barang stok
+        'satuan_id', // barang stok
         'jumlah',
         'harga',
         'tanggal_harga',
@@ -33,6 +34,11 @@ class HargaBarangModal extends Model
     public function barang()
     {
         return $this->belongsTo(Barang::class, 'barang_id');
+    }
+
+    public function satuan()
+    {
+        return $this->belongsTo(BarangSatuan::class, 'satuan_id');
     }
  
     public function masterSatuan()

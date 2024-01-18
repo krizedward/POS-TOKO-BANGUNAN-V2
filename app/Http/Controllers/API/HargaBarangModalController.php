@@ -24,9 +24,10 @@ class HargaBarangModalController extends Controller
         foreach ($hargas as $harga) {
             $data[] = [
                 'id' => $harga->id,
-                'nama_barang' => $harga->barang->nama,
-                'harga_barang' => $harga->harga,
-                'jumlah_barang' => $harga->jumlah,
+                'nama' => $harga->barang->nama,
+                'harga' => $harga->harga,
+                'jumlah' => $harga->jumlah,
+                'satuan' => $harga->satuan->nama,
                 'tanggal_harga' => $harga->tanggal_harga,
             ];
         }
@@ -47,15 +48,17 @@ class HargaBarangModalController extends Controller
     {
         //
         //validasi
-        $request->validate([
-            'barang_id' => 'required',
-            'jumlah' => 'required',
-            'harga' => 'required',
-            'tanggal_harga' => 'required',
-        ]);
+        // $request->validate([
+        //     'barang_id' => 'required',
+        //     'satuan_id' => 'required',
+        //     'jumlah' => 'required',
+        //     'harga' => 'required',
+        //     'tanggal_harga' => 'required',
+        // ]);
         //create
         $data = HargaBarangModal::create([
             'barang_id' => $request->barang_id,
+            'satuan_id' => $request->satuan_id,
             'jumlah' => $request->jumlah,
             'harga' => $request->harga,
             'tanggal_harga' => $request->tanggal_harga,
