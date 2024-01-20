@@ -30,17 +30,21 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/', [ApiController::class, 'index']);
 
-Route::get('/master-barang', [MasterBarangController::class, 'index']);
-Route::post('/master-barang/store', [MasterBarangController::class, 'store']);
-Route::get('/master-barang/{id}/show', [MasterBarangController::class, 'show']);
-Route::put('/master-barang/{id}/update', [MasterBarangController::class, 'update']);
-Route::delete('/master-barang/{id}/delete', [MasterBarangController::class, 'destroy']);
+// Route::get('/master-barang', [MasterBarangController::class, 'index']);
+// Route::post('/master-barang/store', [MasterBarangController::class, 'store']);
+// Route::get('/master-barang/{id}/show', [MasterBarangController::class, 'show']);
+// Route::put('/master-barang/{id}/update', [MasterBarangController::class, 'update']);
+// Route::delete('/master-barang/{id}/delete', [MasterBarangController::class, 'destroy']);
 
 Route::get('/barang', [BarangController::class, 'index']);
 Route::post('/barang/store', [BarangController::class, 'store']);
 Route::get('/barang/{id}/show', [BarangController::class, 'show']);
 Route::put('/barang/{id}/update', [BarangController::class, 'update']);
 Route::delete('/barang/{id}/delete', [BarangController::class, 'destroy']);
+Route::get('/barang/trash', [BarangController::class, 'trash']);
+Route::get('/barang/{id}/restore', [BarangController::class, 'restore']);
+Route::get('/barang/all-restore', [BarangController::class, 'allrestore']);
+Route::delete('/barang/force-delete', [BarangController::class, 'forcerestore']);
 
 Route::get('/kategori-barang-umum', [KategoriBarangUmumController::class, 'index']);
 Route::post('/kategori-barang-umum/store', [KategoriBarangUmumController::class, 'store']);

@@ -85,7 +85,7 @@ class BarangController extends Controller
         $barang  = Barang::where('id',$id)->first();
         
         $data = [
-            'id' => 1,
+            'id' => $barang->id,
             'nama' => $barang->nama,
             'slug' => $barang->slug,
             // Tambahkan data lain yang ingin ditampilkan di sini
@@ -154,6 +154,68 @@ class BarangController extends Controller
             'status' => 200,
             'status_message' => 'success',
             'text_message' => 'Data berhasil dihapus'
+        ], 200);
+    }
+
+    public function trash()
+    {
+        // mengampil data guru yang sudah dihapus
+    	$data = Barang::onlyTrashed()->get();
+    	// return view('guru_trash', ['guru' => $guru]);
+
+        return response()->json([
+            'status' => 200,
+            'status_message' => 'success',
+            'text_message' => 'Data yang dihapus sementara',
+            'data' => $data,
+        ], 200);
+    }
+
+    public function restore($id)
+    {
+        // mengampil data guru yang sudah dihapus
+        $data = Barang::onlyTrashed()->where('id',$id);
+    	$data->restore();
+    	// $data = Barang::onlyTrashed()->get();
+    	// return view('guru_trash', ['guru' => $guru]);
+
+        return response()->json([
+            'status' => 200,
+            'status_message' => 'success',
+            'text_message' => 'Data berhasil dipulihkan',
+            // 'data' => $data,
+        ], 200);
+    }
+
+    public function allrestore()
+    {
+        // mengampil data guru yang sudah dihapus
+        $data = Barang::onlyTrashed();
+    	$data->restore();
+    	// $data = Barang::onlyTrashed()->get();
+    	// return view('guru_trash', ['guru' => $guru]);
+
+        return response()->json([
+            'status' => 200,
+            'status_message' => 'success',
+            'text_message' => 'Data berhasil dipulihkan',
+            // 'data' => $data,
+        ], 200);
+    }
+
+    public function forcerestore()
+    {
+        // mengampil data guru yang sudah dihapus
+        $data = Barang::onlyTrashed();
+    	$data->forceDelete();
+    	// $data = Barang::onlyTrashed()->get();
+    	// return view('guru_trash', ['guru' => $guru]);
+
+        return response()->json([
+            'status' => 200,
+            'status_message' => 'success',
+            'text_message' => 'Data hilang secara permanen',
+            // 'data' => $data,
         ], 200);
     }
 }
