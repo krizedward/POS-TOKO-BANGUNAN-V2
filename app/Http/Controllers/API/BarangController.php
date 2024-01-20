@@ -15,6 +15,9 @@ class BarangController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * done
+     * 
      */
     public function index()
     {
@@ -42,17 +45,21 @@ class BarangController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * done
+     * 
      */
     public function store(Request $request)
     {
         //
         // validasi
-        $request->validate([
-            'nama' => 'required',
-        ]);
+        // $request->validate([
+        //     'nama' => 'required',
+        // ]);
         // create
         $data = Barang::create([
             'nama' => $request->nama,
+            'slug' => Str::slug($request->nama),
         ]);
         // respon
         return response()->json([
@@ -68,6 +75,9 @@ class BarangController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * done
+     * 
      */
     public function show($id)
     {
@@ -75,9 +85,9 @@ class BarangController extends Controller
         $barang  = Barang::where('id',$id)->first();
         
         $data = [
+            'id' => 1,
             'nama' => $barang->nama,
-            'harga' => $barang->harga,
-            'kategori' => $barang->kategori,
+            'slug' => $barang->slug,
             // Tambahkan data lain yang ingin ditampilkan di sini
         ];
 
@@ -94,16 +104,20 @@ class BarangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * done
+     * 
      */
     public function update(Request $request, $id)
     {
         // validate
-        $request->validate([
-            'nama' => 'reqired',
-        ]);
+        // $request->validate([
+        //     'nama' => 'reqired',
+        // ]);
 
         $data = Barang::where('id',$id)->update([
             'nama' => $request->nama,
+            'slug' => Str::slug($request->nama),
             // 'harga' => $request->harga,
             // 'kategori' => $request->kategori,
             // 'slug' => Str::slug($request->nama),
@@ -117,7 +131,7 @@ class BarangController extends Controller
             'status' => 200,
             'status_message' => 'success',
             'text_message' => 'Data berhasil mengubah data',
-            'data' => $data,
+            // 'data' => $data,
         ], 200);
     }
 
@@ -126,6 +140,9 @@ class BarangController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * done
+     * 
      */
     public function destroy($id)
     {
