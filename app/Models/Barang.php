@@ -26,4 +26,9 @@ class Barang extends Model
         'nama',
         'slug',
     ];
+
+    public function barangGambars()
+    {
+        return $this->hasMany(BarangGambar::class, 'barang_id');
+    }
 }

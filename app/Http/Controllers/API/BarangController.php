@@ -4,10 +4,12 @@ namespace App\Http\Controllers\API;
 
 // Model
 use App\Models\Barang;
+use App\Models\BarangGambar;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class BarangController extends Controller
 {
@@ -24,13 +26,24 @@ class BarangController extends Controller
         //
         // return 'berhasil';
         $data = [];
-        $barangs = Barang::all();
+
+        $barangs = Barang::leftJoin('barang_gambar', 'barang.id', '=', 'barang_gambar.barang_id')
+            ->select('barang.id', 'barang.nama', 'barang.slug', 'barang_gambar.filename', 'barang_gambar.path')
+            ->get();
 
         foreach ($barangs as $barang) {
+            // $path = Storage::path("public\\gambar\\{$barang->filename}");
+
             $data[] = [
                 'id' => $barang->id,
                 'nama' => $barang->nama,
                 'slug' => $barang->slug,
+                'gambar' => $barang->filename,
+                'gambar_path' => $barang->path
+                // 'gambar' => [
+                //     'filename' => $barang->filename,
+                //     'path' => $path,
+                // ],
             ];
         }
 
@@ -49,24 +62,89 @@ class BarangController extends Controller
      * done
      * 
      */
+    // public function store(Request $request)
+    // {
+    //     //
+    //     // validasi
+    //     // $request->validate([
+    //     //     'nama' => 'required',
+    //     // ]);
+    //     // create
+    //     $data = Barang::create([
+    //         'nama' => $request->nama,
+    //         'slug' => Str::slug($request->nama),
+    //     ]);
+
+    //     if ($request->hasFile('gambar')) {
+    //         // Assuming 'gambar' is the file input name
+    //         $gambarFile = $request->file('gambar');
+    //         $filename = $gambarFile->getClientOriginalName(); // You may want to customize the filename
+    
+    //         // Save image details to barang_gambar table
+    //         $barang->barangGambars()->create([
+    //             'filename' => $filename,
+    //             'path' => $gambarFile->storeAs('gambar', $filename, 'public'), // Adjust the storage path as needed
+    //         ]);
+
+    //         BarangGambar::create([
+    //             'barang_id' => $data->id,
+    //             'filename' => $request->gambar,
+    //             'path' => $request->gambar,
+    //         ]);
+    //     }
+
+    //     // respon
+    //     return response()->json([
+    //         'status' => 201,
+    //         'status_message' => 'success',
+    //         'text_message' => 'Data berhasil disimpan',
+    //         'data' => $data,
+    //     ], 201);
+    // }
+
     public function store(Request $request)
     {
-        //
-        // validasi
-        // $request->validate([
-        //     'nama' => 'required',
-        // ]);
-        // create
-        $data = Barang::create([
+        // Validasi
+        $request->validate([
+            'nama' => 'required',
+            // 'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
+        ]);
+
+        // Buat Barang baru
+        $barang = Barang::create([
             'nama' => $request->nama,
             'slug' => Str::slug($request->nama),
         ]);
-        // respon
+
+        // Cek apakah ada file gambar yang diunggah
+        if ($request->hasFile('gambar')) {
+            // Ambil file gambar dari request
+            $gambarFile = $request->file('gambar');
+
+            // Tentukan nama file
+            $filename = $gambarFile->getClientOriginalName();
+
+            // Simpan informasi gambar ke tabel barang_gambar
+            $barang->barangGambars()->create([
+                'barang_id' => $barang->id,
+                'filename' => $filename,
+                'path' => $gambarFile->storeAs('gambar', $filename, 'public'), // Sesuaikan path penyimpanan
+            ]);
+        }
+
+        // Simpan informasi gambar ke tabel BarangGambar (jika diperlukan)
+        // BarangGambar::create([
+        //     'barang_id' => $barang->id,
+        //     'filename' => $filename, // Sesuaikan dengan kolom yang dibutuhkan
+        //     'path' => $gambarFile->storeAs('gambar', $filename, 'public'), // Sesuaikan path penyimpanan
+        // ]);
+
+        // Respon
         return response()->json([
             'status' => 201,
             'status_message' => 'success',
             'text_message' => 'Data berhasil disimpan',
-            'data' => $data,
+            'data' => $barang,
         ], 201);
     }
 
