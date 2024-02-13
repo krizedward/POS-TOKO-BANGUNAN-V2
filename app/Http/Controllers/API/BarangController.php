@@ -5,6 +5,10 @@ namespace App\Http\Controllers\API;
 // Model
 use App\Models\Barang;
 use App\Models\BarangGambar;
+use App\Models\HargaJualBarang;
+use App\Models\HargaTokoBarang;
+use App\Models\HargaModalBarang;
+use App\Models\StokBarangGudang;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -28,7 +32,20 @@ class BarangController extends Controller
         $data = [];
 
         $barangs = Barang::leftJoin('barang_gambar', 'barang.id', '=', 'barang_gambar.barang_id')
-            ->select('barang.id', 'barang.nama', 'barang.slug', 'barang_gambar.filename', 'barang_gambar.path')
+            ->leftJoin('harga_jual_barang', 'barang.id', '=', 'harga_jual_barang.barang_id')
+            ->leftJoin('harga_toko_barang', 'barang.id', '=', 'harga_toko_barang.barang_id')
+            ->leftJoin('harga_modal_barang', 'barang.id', '=', 'harga_modal_barang.barang_id')
+            ->leftJoin('stok_barang_gudang', 'barang.id', '=', 'stok_barang_gudang.barang_id')
+            ->select(
+                'barang.id', 
+                'barang.nama', 
+                'barang.slug', 
+                'barang_gambar.filename', 
+                'barang_gambar.path',
+                'harga_jual_barang.harga as harga_jual', // Perubahan nama kolom)
+                'harga_toko_barang.harga as harga_toko', // Perubahan nama kolom)
+                'harga_modal_barang.harga as harga_modal',
+                'stok_barang_gudang.stok_masuk as stok_gudang',)
             ->get();
 
         foreach ($barangs as $barang) {
@@ -39,7 +56,12 @@ class BarangController extends Controller
                 'nama' => $barang->nama,
                 'slug' => $barang->slug,
                 'gambar' => $barang->filename,
-                'gambar_path' => $barang->path
+                'gambar_path' => $barang->path,
+                'harga_jual' => $barang->harga_jual ?? 0,
+                'harga_toko' => $barang->harga_toko ?? 0,
+                'harga_modal' => $barang->harga_modal ?? 0,
+                // 'stok_toko' => 0,
+                'stok_gudang' => $barang->stok_gudang ?? 0,
                 // 'gambar' => [
                 //     'filename' => $barang->filename,
                 //     'path' => $path,
@@ -114,6 +136,37 @@ class BarangController extends Controller
         $barang = Barang::create([
             'nama' => $request->nama,
             'slug' => Str::slug($request->nama),
+        ]);
+
+        $idBarang = $barang->id;
+
+        HargaModalBarang::create([
+            'barang_id' => $idBarang,
+            'jumlah' => 0,
+            'harga' => 0,
+        ]);
+
+        HargaJualBarang::create([
+            'barang_id' => $idBarang, 
+            // 'satuan_id',
+            'jumlah' => 0,
+            'harga' => 0,
+            // 'tanggal_harga',
+        ]);
+
+        HargaTokoBarang::create([
+            'barang_id' => $idBarang,
+            'jumlah' => 0,
+            'harga' => 0,
+        ]);
+
+        StokBarangGudang::create([
+            'barang_id' => $idBarang,
+            // 'ukuran_barang' => '',
+            // 'satuan_id' => '',
+            'stok_masuk' => 0,
+            'stok_keluar' => 0,
+            // 'status_stok',
         ]);
 
         // Cek apakah ada file gambar yang diunggah
@@ -193,7 +246,7 @@ class BarangController extends Controller
         //     'nama' => 'reqired',
         // ]);
 
-        $data = Barang::where('id',$id)->update([
+        Barang::where('id',$id)->update([
             'nama' => $request->nama,
             'slug' => Str::slug($request->nama),
             // 'harga' => $request->harga,
@@ -204,6 +257,19 @@ class BarangController extends Controller
             // 'slug' => Str::slug($request->nama),
             // 'nickname' => $request->nickname,
         ]);
+
+        // Update atau Buat data HargaJualBarang
+        HargaJualBarang::updateOrCreate(
+            ['barang_id' => $id], // Kunci pencarian
+            ['harga' => $request->harga_jual] // Data untuk di-update atau di-create
+            // Tambahkan kolom lain jika diperlukan
+        );
+
+        HargaTokoBarang::updateOrCreate(
+            ['barang_id' => $id], // Kunci pencarian
+            ['harga' => $request->harga_toko] // Data untuk di-update atau di-create
+            // Tambahkan kolom lain jika diperlukan
+        );
 
         return response()->json([
             'status' => 200,

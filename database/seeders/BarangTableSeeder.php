@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Barang;
+use App\Models\HargaJualBarang;
+use App\Models\HargaTokoBarang;
+use App\Models\HargaModalBarang;
+use App\Models\StokBarangGudang;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -828,7 +832,31 @@ class BarangTableSeeder extends Seeder
             );
             
             // ambil id
-            // $lastId = $barang->id;
+            $lastId = $barang->id;
+
+            HargaModalBarang::create([
+                'barang_id' => $lastId,
+                'jumlah' => 0,
+                'harga' => 0,
+            ]);
+
+            HargaJualBarang::create([
+                'barang_id' => $lastId, 
+                'jumlah' => 0,
+                'harga' => 0,
+            ]);
+
+            HargaTokoBarang::create([
+                'barang_id' => $lastId,
+                'jumlah' => 0,
+                'harga' => 0,
+            ]);
+
+            StokBarangGudang::create([
+                'barang_id' => $lastId,
+                'stok_masuk' => 0,
+                'stok_keluar' => 0,
+            ]);
 
             // BarangStok::create([
             //   'barang_id' => $lastId,
