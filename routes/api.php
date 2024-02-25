@@ -10,6 +10,7 @@ use App\Http\Controllers\API\MasterKategoriBarangController;
 use App\Http\Controllers\API\BarangStokController;
 use App\Http\Controllers\API\HargaBarangModalController;
 use App\Http\Controllers\API\BarangSatuanController;
+use App\Http\Controllers\API\StokBarangGudangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,17 @@ Route::get('/barang-satuan/trash', [BarangSatuanController::class, 'trash']);
 Route::get('/barang-satuan/{id}/restore', [BarangSatuanController::class, 'restore']);
 Route::get('/barang-satuan/all-restore', [BarangSatuanController::class, 'allrestore']);
 Route::delete('/barang-satuan/force-delete', [BarangSatuanController::class, 'forcerestore']);
+
+// stok barang gudang StokBarangGudangController
+Route::get('/stok-barang-gudang', [StokBarangGudangController::class, 'index']);
+// Route::post('/stok-barang-gudang/store', [StokBarangGudangController::class, 'store']);
+Route::get('/stok-barang-gudang/{id}/show', [StokBarangGudangController::class, 'show']);
+Route::put('/stok-barang-gudang/{id}/update', [StokBarangGudangController::class, 'update']);
+Route::delete('/stok-barang-gudang/{id}/delete', [StokBarangGudangController::class, 'destroy']);
+Route::get('/stok-barang-gudang/trash', [StokBarangGudangController::class, 'trash']);
+Route::get('/stok-barang-gudang/{id}/restore', [StokBarangGudangController::class, 'restore']);
+Route::get('/stok-barang-gudang/all-restore', [StokBarangGudangController::class, 'allrestore']);
+Route::delete('/stok-barang-gudang/force-delete', [StokBarangGudangController::class, 'forcerestore']);
 
 // Route::post('/member-award/store', [MemberAwardController::class, 'store']);
 // Route::get('/member-award/{id}/show', [MemberAwardController::class, 'show']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 // Model
 use App\Models\Barang;
+use App\Models\BarangKeterangan;
 use App\Models\BarangGambar;
 use App\Models\HargaJualBarang;
 use App\Models\HargaTokoBarang;
@@ -36,6 +37,7 @@ class BarangController extends Controller
             ->leftJoin('harga_toko_barang', 'barang.id', '=', 'harga_toko_barang.barang_id')
             ->leftJoin('harga_modal_barang', 'barang.id', '=', 'harga_modal_barang.barang_id')
             ->leftJoin('stok_barang_gudang', 'barang.id', '=', 'stok_barang_gudang.barang_id')
+            ->leftJoin('barang_keterangan', 'barang.id', '=', 'barang_keterangan.barang_id')
             ->select(
                 'barang.id', 
                 'barang.nama', 
@@ -45,7 +47,8 @@ class BarangController extends Controller
                 'harga_jual_barang.harga as harga_jual', // Perubahan nama kolom)
                 'harga_toko_barang.harga as harga_toko', // Perubahan nama kolom)
                 'harga_modal_barang.harga as harga_modal',
-                'stok_barang_gudang.stok_masuk as stok_gudang',)
+                'stok_barang_gudang.stok_total as stok_gudang',
+                'barang_keterangan.keterangan as keterangan',)
             ->get();
 
         foreach ($barangs as $barang) {
@@ -62,6 +65,7 @@ class BarangController extends Controller
                 'harga_modal' => $barang->harga_modal ?? 0,
                 // 'stok_toko' => 0,
                 'stok_gudang' => $barang->stok_gudang ?? 0,
+                'keterangan' => $barang->keterangan,
                 // 'gambar' => [
                 //     'filename' => $barang->filename,
                 //     'path' => $path,
@@ -169,6 +173,11 @@ class BarangController extends Controller
             // 'status_stok',
         ]);
 
+        BarangKeterangan::create([
+            'barang_id' => $idBarang,
+            'keterangan' => 'tidak ada keterangan',
+        ]);
+
         // Cek apakah ada file gambar yang diunggah
         if ($request->hasFile('gambar')) {
             // Ambil file gambar dari request
@@ -214,11 +223,23 @@ class BarangController extends Controller
     {
         //
         $barang  = Barang::where('id',$id)->first();
-        
+        $harga_jual = HargaJualBarang::where('barang_id',$id)->first();
+        $harga_toko = HargaTokoBarang::where('barang_id',$id)->first();
+        $harga_modal = HargaModalBarang::where('barang_id',$id)->first();
+        $stok_gudang = StokBarangGudang::where('barang_id',$id)->first();
+        $barang_keterangan = BarangKeterangan::where('barang_id',$id)->first();
+
         $data = [
             'id' => $barang->id,
             'nama' => $barang->nama,
             'slug' => $barang->slug,
+            'gambar' => '',
+            'gambar_path' => '',
+            'harga_jual' => $harga_jual->harga,
+            'harga_toko' => $harga_toko->harga,
+            'harga_modal' => $harga_modal->harga,
+            'stok_gudang' => $stok_gudang->stok_masuk,
+            'keterangan' => $barang_keterangan->keterangan,
             // Tambahkan data lain yang ingin ditampilkan di sini
         ];
 
@@ -258,6 +279,10 @@ class BarangController extends Controller
             // 'nickname' => $request->nickname,
         ]);
 
+        // StokBarangGudang::where('barang_id',$id)->update([
+        //     'stok_masuk' => $request->stok_masuk,
+        // ]);
+
         // Update atau Buat data HargaJualBarang
         HargaJualBarang::updateOrCreate(
             ['barang_id' => $id], // Kunci pencarian
@@ -269,6 +294,21 @@ class BarangController extends Controller
             ['barang_id' => $id], // Kunci pencarian
             ['harga' => $request->harga_toko] // Data untuk di-update atau di-create
             // Tambahkan kolom lain jika diperlukan
+        );
+
+        HargaModalBarang::updateOrCreate(
+            ['barang_id' => $id],
+            ['harga' => $request->harga_modal]
+        );
+
+        StokBarangGudang::updateOrCreate(
+            ['barang_id' => $id],
+            ['stok_masuk' => $request->stok_masuk],
+        );
+
+        BarangKeterangan::updateOrCreate(
+            ['barang_id' => $id],
+            ['keterangan' => $request->keterangan],
         );
 
         return response()->json([

@@ -13,17 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('stok_barang_gudang', function (Blueprint $table) {
+        Schema::create('barang_stok', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->unsignedBigInteger('barang_id')->nullable();
-            // $table->string('ukuran_barang')->nullable(); // 100 x 100
-            // $table->unsignedBigInteger('satuan_id')->nullable(); // meter
-            // $table->integer('stok_masuk')->nullable();
-            // $table->integer('stok_keluar')->nullable();
-            // $table->string('status_stok')->nullable(); // aman, lebih, kurang
-            // $table->timestamp('deleted_at')->nullable();
-            // $table->timestamps();
-
             $table->unsignedBigInteger('barang_id')->nullable();
             $table->unsignedBigInteger('satuan_id')->nullable();
             $table->integer('stok_total')->nullable();
@@ -42,6 +33,8 @@ return new class extends Migration
             ->references('id')->on('barang_satuan')
             ->onUpdate('cascade')
             ->onDelete('cascade');
+
+
         });
     }
 
@@ -52,6 +45,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stok_barang_gudang');
+        Schema::dropIfExists('barang_stok');
     }
 };
